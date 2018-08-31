@@ -20,7 +20,7 @@ public enum EarthquakeMagnitude {
     
     /// Create an instance of EarthquakeMagnitude usign the magnitude given
     ///
-    init?(magnitude: Double){
+    public init?(magnitude: Double){
         guard magnitude > 0 else {
             return nil
         }
