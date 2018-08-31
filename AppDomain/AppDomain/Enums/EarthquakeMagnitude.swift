@@ -16,4 +16,21 @@ public enum EarthquakeMagnitude {
     case high(Double)
     case moderate(Double)
     case low(Double)
+    
+    init?(magnitude: Double){
+        return nil
+    }
+    
+    public var magnitude: Double{
+        switch self {
+        case .low(let magnitude):
+            return magnitude
+        case .moderate(let magnitude):
+            return magnitude
+        case .high(let magnitude):
+            return magnitude
+        case .extreme(let magnitude):
+            return magnitude
+        }
+    }
 }

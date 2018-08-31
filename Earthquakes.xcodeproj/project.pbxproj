@@ -21,6 +21,7 @@
 		0F6692BD213A32670058D1A6 /* Earthquake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6692BC213A32670058D1A6 /* Earthquake.swift */; };
 		0F6692BF213A32670058D1A6 /* EarthquakeMagnitude.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6692BE213A32670058D1A6 /* EarthquakeMagnitude.swift */; };
 		0F6692C1213A32670058D1A6 /* EarthquakesDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6692C0213A32670058D1A6 /* EarthquakesDataProvider.swift */; };
+		0F6692C6213A32670058D1A6 /* EarthquakeMagnitudeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6692C5213A32670058D1A6 /* EarthquakeMagnitudeTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		0F6692BC213A32670058D1A6 /* Earthquake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Earthquake.swift; sourceTree = "<group>"; };
 		0F6692BE213A32670058D1A6 /* EarthquakeMagnitude.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeMagnitude.swift; sourceTree = "<group>"; };
 		0F6692C0213A32670058D1A6 /* EarthquakesDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakesDataProvider.swift; sourceTree = "<group>"; };
+		0F6692C5213A32670058D1A6 /* EarthquakeMagnitudeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeMagnitudeTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 			children = (
 				0F6692A9213A32670058D1A6 /* AppDomainTests.swift */,
 				0F6692AB213A32670058D1A6 /* Info.plist */,
+				0F6692C5213A32670058D1A6 /* EarthquakeMagnitudeTests.swift */,
 			);
 			path = AppDomainTests;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F6692AA213A32670058D1A6 /* AppDomainTests.swift in Sources */,
+				0F6692C6213A32670058D1A6 /* EarthquakeMagnitudeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
