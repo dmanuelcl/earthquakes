@@ -22,6 +22,15 @@
 		0F6692BF213A32670058D1A6 /* EarthquakeMagnitude.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6692BE213A32670058D1A6 /* EarthquakeMagnitude.swift */; };
 		0F6692C1213A32670058D1A6 /* EarthquakesDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6692C0213A32670058D1A6 /* EarthquakesDataProvider.swift */; };
 		0F6692C6213A32670058D1A6 /* EarthquakeMagnitudeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6692C5213A32670058D1A6 /* EarthquakeMagnitudeTests.swift */; };
+		0F6692D6213A32670058D1A6 /* AppServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6692CD213A32670058D1A6 /* AppServices.framework */; };
+		0F6692DD213A32670058D1A6 /* AppServicesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6692DC213A32670058D1A6 /* AppServicesTests.swift */; };
+		0F6692DF213A32670058D1A6 /* AppServices.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F6692CF213A32670058D1A6 /* AppServices.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0F6692E2213A32670058D1A6 /* AppServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6692CD213A32670058D1A6 /* AppServices.framework */; };
+		0F6692E3213A32670058D1A6 /* AppServices.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6692CD213A32670058D1A6 /* AppServices.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0F6692EF213A32670058D1A6 /* EarthquakesDataProviderResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6692EE213A32670058D1A6 /* EarthquakesDataProviderResponse.swift */; };
+		0F6692F1213A32670058D1A6 /* ApiParameterConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6692F0213A32670058D1A6 /* ApiParameterConvertible.swift */; };
+		0F6692F3213A32670058D1A6 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6692F2213A32670058D1A6 /* ApiManager.swift */; };
+		0F6692F5213A32670058D1A6 /* ApiParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6692F4213A32670058D1A6 /* ApiParameter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +62,27 @@
 			remoteGlobalIDString = 0F669299213A32670058D1A6;
 			remoteInfo = AppDomain;
 		};
+		0F6692D7213A32670058D1A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F669269213A32670058D1A6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F6692CC213A32670058D1A6;
+			remoteInfo = AppServices;
+		};
+		0F6692D9213A32670058D1A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F669269213A32670058D1A6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F669270213A32670058D1A6;
+			remoteInfo = Earthquakes;
+		};
+		0F6692E0213A32670058D1A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F669269213A32670058D1A6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F6692CC213A32670058D1A6;
+			remoteInfo = AppServices;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,6 +92,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				0F6692E3213A32670058D1A6 /* AppServices.framework in Embed Frameworks */,
 				0F6692B0213A32670058D1A6 /* AppDomain.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -90,6 +121,16 @@
 		0F6692BE213A32670058D1A6 /* EarthquakeMagnitude.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeMagnitude.swift; sourceTree = "<group>"; };
 		0F6692C0213A32670058D1A6 /* EarthquakesDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakesDataProvider.swift; sourceTree = "<group>"; };
 		0F6692C5213A32670058D1A6 /* EarthquakeMagnitudeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeMagnitudeTests.swift; sourceTree = "<group>"; };
+		0F6692CD213A32670058D1A6 /* AppServices.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppServices.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F6692CF213A32670058D1A6 /* AppServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppServices.h; sourceTree = "<group>"; };
+		0F6692D0213A32670058D1A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F6692D5213A32670058D1A6 /* AppServicesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppServicesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F6692DC213A32670058D1A6 /* AppServicesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServicesTests.swift; sourceTree = "<group>"; };
+		0F6692DE213A32670058D1A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F6692EE213A32670058D1A6 /* EarthquakesDataProviderResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakesDataProviderResponse.swift; sourceTree = "<group>"; };
+		0F6692F0213A32670058D1A6 /* ApiParameterConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiParameterConvertible.swift; sourceTree = "<group>"; };
+		0F6692F2213A32670058D1A6 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		0F6692F4213A32670058D1A6 /* ApiParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiParameter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F6692E2213A32670058D1A6 /* AppServices.framework in Frameworks */,
 				0F6692AF213A32670058D1A6 /* AppDomain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -123,12 +165,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0F6692C9213A32670058D1A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F6692D2213A32670058D1A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F6692D6213A32670058D1A6 /* AppServices.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		0F669268213A32670058D1A6 = {
 			isa = PBXGroup;
 			children = (
+				0F6692C7213A32670058D1A6 /* AppServices */,
 				0F669294213A32670058D1A6 /* AppDomain */,
 				0F669273213A32670058D1A6 /* Earthquakes */,
 				0F669288213A32670058D1A6 /* EarthquakesTests */,
@@ -143,6 +201,8 @@
 				0F669285213A32670058D1A6 /* EarthquakesTests.xctest */,
 				0F66929A213A32670058D1A6 /* AppDomain.framework */,
 				0F6692A2213A32670058D1A6 /* AppDomainTests.xctest */,
+				0F6692CD213A32670058D1A6 /* AppServices.framework */,
+				0F6692D5213A32670058D1A6 /* AppServicesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -232,6 +292,69 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
+		0F6692C7213A32670058D1A6 /* AppServices */ = {
+			isa = PBXGroup;
+			children = (
+				0F6692CE213A32670058D1A6 /* AppServices */,
+				0F6692DB213A32670058D1A6 /* AppServicesTests */,
+			);
+			path = AppServices;
+			sourceTree = "<group>";
+		};
+		0F6692CE213A32670058D1A6 /* AppServices */ = {
+			isa = PBXGroup;
+			children = (
+				0F6692ED213A32670058D1A6 /* DataProvider */,
+				0F6692EC213A32670058D1A6 /* Networking */,
+				0F6692EB213A32670058D1A6 /* Entities */,
+				0F6692EA213A32670058D1A6 /* Supporting Files */,
+			);
+			path = AppServices;
+			sourceTree = "<group>";
+		};
+		0F6692DB213A32670058D1A6 /* AppServicesTests */ = {
+			isa = PBXGroup;
+			children = (
+				0F6692DC213A32670058D1A6 /* AppServicesTests.swift */,
+				0F6692DE213A32670058D1A6 /* Info.plist */,
+			);
+			path = AppServicesTests;
+			sourceTree = "<group>";
+		};
+		0F6692EA213A32670058D1A6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0F6692CF213A32670058D1A6 /* AppServices.h */,
+				0F6692D0213A32670058D1A6 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0F6692EB213A32670058D1A6 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		0F6692EC213A32670058D1A6 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				0F6692F0213A32670058D1A6 /* ApiParameterConvertible.swift */,
+				0F6692F2213A32670058D1A6 /* ApiManager.swift */,
+				0F6692F4213A32670058D1A6 /* ApiParameter.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		0F6692ED213A32670058D1A6 /* DataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				0F6692EE213A32670058D1A6 /* EarthquakesDataProviderResponse.swift */,
+			);
+			path = DataProvider;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -240,6 +363,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F6692AC213A32670058D1A6 /* AppDomain.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F6692CA213A32670058D1A6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F6692DF213A32670058D1A6 /* AppServices.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +390,7 @@
 			);
 			dependencies = (
 				0F6692AE213A32670058D1A6 /* PBXTargetDependency */,
+				0F6692E1213A32670058D1A6 /* PBXTargetDependency */,
 			);
 			name = Earthquakes;
 			productName = Earthquakes;
@@ -320,6 +452,43 @@
 			productReference = 0F6692A2213A32670058D1A6 /* AppDomainTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		0F6692CC213A32670058D1A6 /* AppServices */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F6692E4213A32670058D1A6 /* Build configuration list for PBXNativeTarget "AppServices" */;
+			buildPhases = (
+				0F6692C8213A32670058D1A6 /* Sources */,
+				0F6692C9213A32670058D1A6 /* Frameworks */,
+				0F6692CA213A32670058D1A6 /* Headers */,
+				0F6692CB213A32670058D1A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AppServices;
+			productName = AppServices;
+			productReference = 0F6692CD213A32670058D1A6 /* AppServices.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		0F6692D4213A32670058D1A6 /* AppServicesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F6692E7213A32670058D1A6 /* Build configuration list for PBXNativeTarget "AppServicesTests" */;
+			buildPhases = (
+				0F6692D1213A32670058D1A6 /* Sources */,
+				0F6692D2213A32670058D1A6 /* Frameworks */,
+				0F6692D3213A32670058D1A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0F6692D8213A32670058D1A6 /* PBXTargetDependency */,
+				0F6692DA213A32670058D1A6 /* PBXTargetDependency */,
+			);
+			name = AppServicesTests;
+			productName = AppServicesTests;
+			productReference = 0F6692D5213A32670058D1A6 /* AppServicesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -345,6 +514,14 @@
 						CreatedOnToolsVersion = 9.4.1;
 						TestTargetID = 0F669270213A32670058D1A6;
 					};
+					0F6692CC213A32670058D1A6 = {
+						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
+					};
+					0F6692D4213A32670058D1A6 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = 0F669270213A32670058D1A6;
+					};
 				};
 			};
 			buildConfigurationList = 0F66926C213A32670058D1A6 /* Build configuration list for PBXProject "Earthquakes" */;
@@ -364,6 +541,8 @@
 				0F669284213A32670058D1A6 /* EarthquakesTests */,
 				0F669299213A32670058D1A6 /* AppDomain */,
 				0F6692A1213A32670058D1A6 /* AppDomainTests */,
+				0F6692CC213A32670058D1A6 /* AppServices */,
+				0F6692D4213A32670058D1A6 /* AppServicesTests */,
 			);
 		};
 /* End PBXProject section */
@@ -394,6 +573,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		0F6692A0213A32670058D1A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F6692CB213A32670058D1A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F6692D3213A32670058D1A6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -439,6 +632,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0F6692C8213A32670058D1A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F6692F5213A32670058D1A6 /* ApiParameter.swift in Sources */,
+				0F6692F1213A32670058D1A6 /* ApiParameterConvertible.swift in Sources */,
+				0F6692F3213A32670058D1A6 /* ApiManager.swift in Sources */,
+				0F6692EF213A32670058D1A6 /* EarthquakesDataProviderResponse.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F6692D1213A32670058D1A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F6692DD213A32670058D1A6 /* AppServicesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -461,6 +673,21 @@
 			isa = PBXTargetDependency;
 			target = 0F669299213A32670058D1A6 /* AppDomain */;
 			targetProxy = 0F6692AD213A32670058D1A6 /* PBXContainerItemProxy */;
+		};
+		0F6692D8213A32670058D1A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F6692CC213A32670058D1A6 /* AppServices */;
+			targetProxy = 0F6692D7213A32670058D1A6 /* PBXContainerItemProxy */;
+		};
+		0F6692DA213A32670058D1A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F669270213A32670058D1A6 /* Earthquakes */;
+			targetProxy = 0F6692D9213A32670058D1A6 /* PBXContainerItemProxy */;
+		};
+		0F6692E1213A32670058D1A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F6692CC213A32670058D1A6 /* AppServices */;
+			targetProxy = 0F6692E0213A32670058D1A6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -781,6 +1008,105 @@
 			};
 			name = Release;
 		};
+		0F6692E5213A32670058D1A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = RDZLL9T9BG;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/AppServices/AppServices/Supporting Files/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dmanuelcl.ios.earthquakes.AppServices;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		0F6692E6213A32670058D1A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = RDZLL9T9BG;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/AppServices/AppServices/Supporting Files/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dmanuelcl.ios.earthquakes.AppServices;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		0F6692E8213A32670058D1A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RDZLL9T9BG;
+				INFOPLIST_FILE = "$(SRCROOT)/AppServices/AppServicesTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dmanuelcl.ios.earthquakes.AppServicesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Earthquakes.app/Earthquakes";
+			};
+			name = Debug;
+		};
+		0F6692E9213A32670058D1A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RDZLL9T9BG;
+				INFOPLIST_FILE = "$(SRCROOT)/AppServices/AppServicesTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dmanuelcl.ios.earthquakes.AppServicesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Earthquakes.app/Earthquakes";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -825,6 +1151,24 @@
 			buildConfigurations = (
 				0F6692B6213A32670058D1A6 /* Debug */,
 				0F6692B7213A32670058D1A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0F6692E4213A32670058D1A6 /* Build configuration list for PBXNativeTarget "AppServices" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F6692E5213A32670058D1A6 /* Debug */,
+				0F6692E6213A32670058D1A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0F6692E7213A32670058D1A6 /* Build configuration list for PBXNativeTarget "AppServicesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F6692E8213A32670058D1A6 /* Debug */,
+				0F6692E9213A32670058D1A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
