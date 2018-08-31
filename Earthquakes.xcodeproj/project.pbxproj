@@ -31,6 +31,10 @@
 		0F6692F1213A32670058D1A6 /* ApiParameterConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6692F0213A32670058D1A6 /* ApiParameterConvertible.swift */; };
 		0F6692F3213A32670058D1A6 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6692F2213A32670058D1A6 /* ApiManager.swift */; };
 		0F6692F5213A32670058D1A6 /* ApiParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6692F4213A32670058D1A6 /* ApiParameter.swift */; };
+		0F6692F7213A32670058D1A6 /* ApiParameterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6692F6213A32670058D1A6 /* ApiParameterTests.swift */; };
+		0F6692F9213A32670058D1A6 /* UsgsApiManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6692F8213A32670058D1A6 /* UsgsApiManagerTests.swift */; };
+		0F6692FB213A32670058D1A6 /* EarthquakesDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6692FA213A32670058D1A6 /* EarthquakesDataProviderTests.swift */; };
+		0F6692FD213A32670058D1A6 /* UsgsApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6692FC213A32670058D1A6 /* UsgsApiManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +135,10 @@
 		0F6692F0213A32670058D1A6 /* ApiParameterConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiParameterConvertible.swift; sourceTree = "<group>"; };
 		0F6692F2213A32670058D1A6 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		0F6692F4213A32670058D1A6 /* ApiParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiParameter.swift; sourceTree = "<group>"; };
+		0F6692F6213A32670058D1A6 /* ApiParameterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiParameterTests.swift; sourceTree = "<group>"; };
+		0F6692F8213A32670058D1A6 /* UsgsApiManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsgsApiManagerTests.swift; sourceTree = "<group>"; };
+		0F6692FA213A32670058D1A6 /* EarthquakesDataProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakesDataProviderTests.swift; sourceTree = "<group>"; };
+		0F6692FC213A32670058D1A6 /* UsgsApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsgsApiManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,6 +325,9 @@
 			children = (
 				0F6692DC213A32670058D1A6 /* AppServicesTests.swift */,
 				0F6692DE213A32670058D1A6 /* Info.plist */,
+				0F6692F6213A32670058D1A6 /* ApiParameterTests.swift */,
+				0F6692F8213A32670058D1A6 /* UsgsApiManagerTests.swift */,
+				0F6692FA213A32670058D1A6 /* EarthquakesDataProviderTests.swift */,
 			);
 			path = AppServicesTests;
 			sourceTree = "<group>";
@@ -343,6 +354,7 @@
 				0F6692F0213A32670058D1A6 /* ApiParameterConvertible.swift */,
 				0F6692F2213A32670058D1A6 /* ApiManager.swift */,
 				0F6692F4213A32670058D1A6 /* ApiParameter.swift */,
+				0F6692FC213A32670058D1A6 /* UsgsApiManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -639,6 +651,7 @@
 				0F6692F5213A32670058D1A6 /* ApiParameter.swift in Sources */,
 				0F6692F1213A32670058D1A6 /* ApiParameterConvertible.swift in Sources */,
 				0F6692F3213A32670058D1A6 /* ApiManager.swift in Sources */,
+				0F6692FD213A32670058D1A6 /* UsgsApiManager.swift in Sources */,
 				0F6692EF213A32670058D1A6 /* EarthquakesDataProviderResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -647,7 +660,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F6692F7213A32670058D1A6 /* ApiParameterTests.swift in Sources */,
+				0F6692F9213A32670058D1A6 /* UsgsApiManagerTests.swift in Sources */,
 				0F6692DD213A32670058D1A6 /* AppServicesTests.swift in Sources */,
+				0F6692FB213A32670058D1A6 /* EarthquakesDataProviderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
