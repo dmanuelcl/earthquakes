@@ -29,6 +29,12 @@ public struct EarthquakesDataFilters {
     
     /// Represent the amount of 'time unit' ago allowed search
     public let timeInterval: TimeIntervalType
+    
+    public init(distance: Int = 100, maxResults: Int = 5 , timeInterval: EarthquakesDataFilters.TimeIntervalType = .hours(1)){
+        self.distance = distance
+        self.maxResults = maxResults
+        self.timeInterval = timeInterval
+    }
 
 }
 
