@@ -18,9 +18,29 @@ public enum EarthquakeMagnitude {
     case low(Double)
     
     init?(magnitude: Double){
-        return nil
+        guard magnitude > 0 else {
+            return nil
+        }
+        if magnitude < 1.5{
+            self = .low(magnitude)
+            return
+        }
+        
+        if magnitude <= 4.5{
+            self = .moderate(magnitude)
+            return
+        }
+        
+        if magnitude <= 7{
+            self = .high(magnitude)
+            return
+        }
+        
+        self = .extreme(magnitude)
     }
     
+    
+    /// Return the magnitude stored in the enum
     public var magnitude: Double{
         switch self {
         case .low(let magnitude):
