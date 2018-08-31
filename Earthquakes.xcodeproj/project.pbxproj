@@ -36,6 +36,8 @@
 		0F6692FB213A32670058D1A6 /* EarthquakesDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6692FA213A32670058D1A6 /* EarthquakesDataProviderTests.swift */; };
 		0F6692FD213A32670058D1A6 /* UsgsApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6692FC213A32670058D1A6 /* UsgsApiManager.swift */; };
 		0F6692FF213A32670058D1A6 /* Earthquake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6692FE213A32670058D1A6 /* Earthquake.swift */; };
+		0F669306213A32670058D1A6 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0F669305213A32670058D1A6 /* Settings.bundle */; };
+		0F669308213A32670058D1A6 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F669307213A32670058D1A6 /* Settings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +143,8 @@
 		0F6692FA213A32670058D1A6 /* EarthquakesDataProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakesDataProviderTests.swift; sourceTree = "<group>"; };
 		0F6692FC213A32670058D1A6 /* UsgsApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsgsApiManager.swift; sourceTree = "<group>"; };
 		0F6692FE213A32670058D1A6 /* Earthquake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Earthquake.swift; sourceTree = "<group>"; };
+		0F669305213A32670058D1A6 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		0F669307213A32670058D1A6 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +200,7 @@
 		0F669268213A32670058D1A6 = {
 			isa = PBXGroup;
 			children = (
+				0F669305213A32670058D1A6 /* Settings.bundle */,
 				0F6692C7213A32670058D1A6 /* AppServices */,
 				0F669294213A32670058D1A6 /* AppDomain */,
 				0F669273213A32670058D1A6 /* Earthquakes */,
@@ -339,6 +344,7 @@
 			children = (
 				0F6692CF213A32670058D1A6 /* AppServices.h */,
 				0F6692D0213A32670058D1A6 /* Info.plist */,
+				0F669307213A32670058D1A6 /* Settings.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -598,6 +604,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F669306213A32670058D1A6 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,6 +662,7 @@
 				0F6692F1213A32670058D1A6 /* ApiParameterConvertible.swift in Sources */,
 				0F6692F3213A32670058D1A6 /* ApiManager.swift in Sources */,
 				0F6692FD213A32670058D1A6 /* UsgsApiManager.swift in Sources */,
+				0F669308213A32670058D1A6 /* Settings.swift in Sources */,
 				0F6692FF213A32670058D1A6 /* Earthquake.swift in Sources */,
 				0F6692EF213A32670058D1A6 /* EarthquakesDataProviderResponse.swift in Sources */,
 			);
