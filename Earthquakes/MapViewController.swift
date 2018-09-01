@@ -19,20 +19,29 @@ class MapViewController: UIViewController {
     
     //MARK: - IBOutlet
     @IBOutlet weak var map: MKMapView!
+    @IBOutlet weak var magnitudeButton: UIButton!
+    @IBOutlet weak var currentLocationButton: UIButton!
+    @IBOutlet weak var searchButton: UIButton!
     
     //MARK: - Attrs
-    var locationManager: CLLocationManager!
-    var annotations: [MKPointAnnotation] = []
-    let dateFormatter = DateFormatter()
+    private var locationManager: CLLocationManager!
+    private let dateFormatter = DateFormatter()
+    var dataSource: EarthquakesDataSourceProtocol!
     
     var locationAlert: UIAlertController?
+    
+    var earthquakesSheetView: EarthquakeSheetView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dateFormatter.dateFormat = "MMMM dd, yyyy, hh:mm:ss a"
         self.setupMap()
+        self.setupEarthquakesSheetView()
     }
     
+    func setupEarthquakesSheetView(){
+        
+    }
     
     func setupMap(){
         //Setup location manager
@@ -41,7 +50,6 @@ class MapViewController: UIViewController {
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.distanceFilter = 100 //To be notified only if the distance is more than 100 meters
         self.locationManager.requestWhenInUseAuthorization()
-        self.locationManager.startUpdatingLocation()
         
         // Setup map view...
         self.map.delegate = self
@@ -55,15 +63,13 @@ class MapViewController: UIViewController {
         self.map.setCenter(coordinate, animated: true)
     }
     
-    func refreshMapAnnotations(with earthquakes: [Earthquake]) {
+    func refreshMapAnnotations() {
 
         // Remove the old anotations
         self.map.removeAnnotations(self.map.annotations)
         
-        let earthquakes = [Earthquake.init(magnitude: EarthquakeMagnitude.high(6), place: "Este es el place 1", time: Date(), latitude: 33.9, longitude: -87.65, depth: 1.0),
-                           Earthquake.init(magnitude: EarthquakeMagnitude.high(6), place: "Este es el place 2", time: Date(), latitude: 32.9, longitude: -89.65, depth: 1.0)]
         // Add new annotations...
-        for earthquake in earthquakes {
+        for earthquake in self.dataSource.earthquakes {
             let pointAnotation = EarthquakePointAnnotation()
             
             pointAnotation.earthquake = earthquake
@@ -72,18 +78,42 @@ class MapViewController: UIViewController {
                 latitude: earthquake.latitude,
                 longitude: earthquake.longitude)
             
-
+            
             let date = self.dateFormatter.string(from: earthquake.time)
             
             pointAnotation.title = earthquake.place
             if let magnitude = earthquake.magnitude{
-                pointAnotation.subtitle = "Magnitude \(magnitude.magnitude) event on \(date)"
+                let subtitle = NSLocalizedString("map_anotation_details", comment: "Anotation subtitle")
+                pointAnotation.subtitle = String.init(format: subtitle, magnitude.magnitude, date)
             }else{
                 pointAnotation.subtitle = "Event on \(date)"
             }
             
             self.map.addAnnotation(pointAnotation)
         }
+    }
+    
+    func updateButtonStatus(searchByMagnitude: Bool, searchByLocation: Bool, searchByCurrentLocation: Bool){
+        self.magnitudeButton.isSelected = searchByMagnitude
+        self.currentLocationButton.isSelected = searchByCurrentLocation
+        self.searchButton.isSelected = searchByLocation
+    }
+    
+    @IBAction func searchForCurrentLocation(_ sender: AnyObject){
+        self.updateButtonStatus(searchByMagnitude: false, searchByLocation: false, searchByCurrentLocation: true)
+    }
+    
+    @IBAction func searchByMagnitude(_ sender: AnyObject){
+        self.updateButtonStatus(searchByMagnitude: true, searchByLocation: false, searchByCurrentLocation: false)
+    }
+    
+    @IBAction func searchForLocation(_ sender: AnyObject){
+        self.updateButtonStatus(searchByMagnitude: false, searchByLocation: true, searchByCurrentLocation: false)
+    }
+    
+    @IBAction func refreshData(_ sender: AnyObject){
+        
+        
     }
 }
 
@@ -105,13 +135,14 @@ extension MapViewController: CLLocationManagerDelegate{
             self.locationAlert = alert
             return
         }
+        self.locationManager.startUpdatingLocation()
         self.locationAlert?.dismiss(animated: true, completion: nil)
     }
 }
 
 extension MapViewController: MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        self.refreshMapAnnotations(with: [])
+        self.refreshMapAnnotations()
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

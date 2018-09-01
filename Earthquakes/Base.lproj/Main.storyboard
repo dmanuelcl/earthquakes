@@ -38,6 +38,9 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="45" height="42.5"/>
                                                         <state key="normal" image="ic_magnitude"/>
                                                         <state key="selected" image="ic_magnitude_selected"/>
+                                                        <connections>
+                                                            <action selector="searchByMagnitude:" destination="OUv-A6-cdf" eventType="touchUpInside" id="Mmv-HY-lO4"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -61,6 +64,10 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dGh-Oe-J0F">
                                                         <rect key="frame" x="0.0" y="0.0" width="45" height="43"/>
                                                         <state key="normal" image="ic_search"/>
+                                                        <state key="selected" image="ic_search_active"/>
+                                                        <connections>
+                                                            <action selector="searchForLocation:" destination="OUv-A6-cdf" eventType="touchUpInside" id="tmX-Uv-Dch"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -86,6 +93,9 @@
                                                         <color key="tintColor" red="0.96470588239999999" green="0.38823529410000002" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" image="ic_location"/>
                                                         <state key="selected" image="ic_location_selected"/>
+                                                        <connections>
+                                                            <action selector="searchForCurrentLocation:" destination="OUv-A6-cdf" eventType="touchUpInside" id="yv5-3a-jKJ"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -153,6 +163,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGv-yI-Wzo">
                                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                         <state key="normal" image="ic_refresh"/>
+                                                        <connections>
+                                                            <action selector="refreshData:" destination="OUv-A6-cdf" eventType="touchUpInside" id="Lc7-OA-TdQ"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -216,7 +229,10 @@
                         <viewLayoutGuide key="safeArea" id="EBt-de-Zqx"/>
                     </view>
                     <connections>
+                        <outlet property="currentLocationButton" destination="k1D-wO-H5U" id="xx3-Mg-cdH"/>
+                        <outlet property="magnitudeButton" destination="EGA-og-4gb" id="y0h-Hz-VPj"/>
                         <outlet property="map" destination="vuO-YA-Nn4" id="cw5-aE-hTG"/>
+                        <outlet property="searchButton" destination="dGh-Oe-J0F" id="Ck5-zQ-Nwo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UIc-39-eV4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -231,5 +247,6 @@
         <image name="ic_magnitude_selected" width="8" height="25"/>
         <image name="ic_refresh" width="20" height="18"/>
         <image name="ic_search" width="21" height="21"/>
+        <image name="ic_search_active" width="21" height="21"/>
     </resources>
 </document>
