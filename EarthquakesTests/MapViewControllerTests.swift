@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import AppDomain
 
 @testable import Earthquakes
 
@@ -24,6 +25,24 @@ class MapViewControllerSpy: MapViewController {
     override func setupEarthquakeSheetView() {
         self.isEarthquakeSheetView = true
     }
+}
+
+class EarthquakesDataSourceSpy: EarthquakesDataSourceProtocol{
+    var earthquakes: [Earthquake] = []
+    
+    var isFetchEarthquakesInCalled: Bool = false
+    var isFetchEarthquakesForCalled: Bool = false
+    
+    func fetchEarthquakesIn(longitude: Double, latitude: Double, completion: @escaping ([Earthquake]) -> Void) {
+        self.isFetchEarthquakesInCalled = true
+        completion([])
+    }
+    
+    func fetchEarthquakesFor(magnitude: EarthquakeMagnitude, completion: @escaping ([Earthquake]) -> Void) {
+        self.isFetchEarthquakesForCalled = true
+        completion([])
+    }
+    
 }
 
 class MapViewControllerTests: XCTestCase {
@@ -45,6 +64,17 @@ class MapViewControllerTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
+    
+    func testSearchForCurrentLocationCallDataSourceMethod() {
+        guard let viewController = self.viewController else {
+            return
+        }
+        let dataSourceSpy = EarthquakesDataSourceSpy()
+        viewController.dataSource = dataSourceSpy
+        viewController.searchForCurrentLocation(self)
+        XCTAssertTrue(dataSourceSpy.isFetchEarthquakesInCalled, "On searchForCurrentLocation(:) the dataSource.fetchEarthquakesIn(longitude:latitude:completion) must be called ")
+    }
+    
     
     func testSearchForMagnitudeUpdateButtonsStatus() {
         guard let viewController = self.viewController else {
