@@ -45,9 +45,9 @@ class MapViewController: UIViewController {
         super.viewDidAppear(animated)
         self.earthquakesSheetView.install()
         if self.dataSource.earthquakes.count == 0{
-            self.earthquakesSheetView.close()
+            self.hideEarthSheetView()
         }else{
-            self.earthquakesSheetView.open()
+            self.displayEarthSheetViewIfNeeded()
         }
     }
     
@@ -86,13 +86,8 @@ class MapViewController: UIViewController {
             self.loadingView.hide()
             self.refreshMapAnnotations()
             self.earthquakesSheetView.reloadData()
-            let shouldHide = self.dataSource.earthquakes.count == 0
-            self.earthquakesSheetView.hideOnClosed = shouldHide
-            if shouldHide{
-                self.earthquakesSheetView.close()
-            }else{
-                self.earthquakesSheetView.open()
-            }
+            self.hideEarthSheetView()
+            self.displayEarthSheetViewIfNeeded()
         }
     }
     
@@ -131,6 +126,17 @@ class MapViewController: UIViewController {
         self.searchButton.isSelected = searchByLocation
     }
     
+    func displayEarthSheetViewIfNeeded(){
+        if self.dataSource.earthquakes.count > 0{
+            self.earthquakesSheetView.hideOnClosed = false
+            self.earthquakesSheetView.open()
+        }
+    }
+    
+    func hideEarthSheetView(){
+        self.earthquakesSheetView.hideOnClosed = true
+        self.earthquakesSheetView.close()
+    }
     
     func search(forMagnitude magnitude: EarthquakeMagnitude){
         self.loadingView.display()
@@ -157,10 +163,7 @@ class MapViewController: UIViewController {
         
         let cancelTitle = NSLocalizedString("magnitude_selection_alert_cancel_action", comment: "Cancel")
         let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel, handler: {[unowned self] _ in
-            if self.dataSource.earthquakes.count > 0{
-                self.earthquakesSheetView.hideOnClosed = false
-                self.earthquakesSheetView.open()
-            }
+            self.displayEarthSheetViewIfNeeded()
         })
         
         let lowTitle = NSLocalizedString("magnitude_low", comment: "Low")
@@ -191,9 +194,18 @@ class MapViewController: UIViewController {
         alertController.addAction(extremeAction)
         alertController.addAction(cancelAction)
         
-        self.earthquakesSheetView.hideOnClosed = true
-        self.earthquakesSheetView.close()
+        self.hideEarthSheetView()
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func presentSearchViewController(){
+        self.hideEarthSheetView()
+        let searchViewController = UIStoryboard.init(name: "Main", bundle: nil)
+            .instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        searchViewController.delegate = self
+        let navigationController = UINavigationController(rootViewController: searchViewController)
+        navigationController.isNavigationBarHidden = false
+        self.present(navigationController, animated: true, completion: nil)
     }
     
     @IBAction func searchForCurrentLocation(_ sender: AnyObject){
@@ -209,6 +221,7 @@ class MapViewController: UIViewController {
     
     @IBAction func searchForLocation(_ sender: AnyObject){
         self.updateButtonStatus(searchByMagnitude: false, searchByLocation: true, searchByCurrentLocation: false)
+        self.presentSearchViewController()
     }
     
     @IBAction func reloadData(_ sender: AnyObject){
@@ -286,9 +299,9 @@ extension MapViewController: EarthquakeSheetViewDelegate{
             let annotationEarthquake = annotation.earthquake
             let isTheSame =
                 annotationEarthquake?.time == earthquake.time &&
-                annotationEarthquake?.place == earthquake.place &&
-                annotationEarthquake?.latitude == earthquake.latitude &&
-                annotationEarthquake?.longitude == earthquake.longitude
+                    annotationEarthquake?.place == earthquake.place &&
+                    annotationEarthquake?.latitude == earthquake.latitude &&
+                    annotationEarthquake?.longitude == earthquake.longitude
             
             return isTheSame
         }
@@ -296,5 +309,20 @@ extension MapViewController: EarthquakeSheetViewDelegate{
             self.map.selectAnnotation(annotationToSelect, animated: true)
         }
         self.earthquakesSheetView.close()
+    }
+}
+
+
+extension MapViewController: SearchViewControllerDelegate{
+    func searchView(didCancel searchViewController: SearchViewController) {
+        searchViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func searchView(didFailed searchViewController: SearchViewController) {
+        searchViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func searchView(_ searchViewController: SearchViewController, didSelectCoordinate coordinate: CLLocationCoordinate2D) {
+        self.search(forLatitude: coordinate.latitude, longitude: coordinate.longitude)
     }
 }

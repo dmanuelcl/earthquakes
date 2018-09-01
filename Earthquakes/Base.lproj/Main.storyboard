@@ -242,7 +242,7 @@
         <!--Search View Controller-->
         <scene sceneID="omY-nl-qkY">
             <objects>
-                <viewController id="d2j-Sm-CXe" customClass="SearchViewController" customModule="Earthquakes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" id="d2j-Sm-CXe" customClass="SearchViewController" customModule="Earthquakes" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZZG-Mt-WnJ"/>
                         <viewControllerLayoutGuide type="bottom" id="8vE-Nd-rSm"/>
@@ -259,7 +259,7 @@
                                     <outlet property="delegate" destination="d2j-Sm-CXe" id="X70-8o-fvs"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="vEX-Vp-3Qa">
+                            <searchBar contentMode="redraw" placeholder="Search for a place or address" translatesAutoresizingMaskIntoConstraints="NO" id="vEX-Vp-3Qa">
                                 <rect key="frame" x="0.0" y="20" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
