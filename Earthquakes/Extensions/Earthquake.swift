@@ -10,6 +10,9 @@ import UIKit
 import AppDomain
 import AVFoundation
 
+//To avoid deallocation inside playSound
+fileprivate var globalAudioPlayer: AVAudioPlayer?
+
 extension Earthquake{
     
     /// Return an UIColor based on eqrthquake magnitude
@@ -76,12 +79,13 @@ extension Earthquake{
         }
         guard let url = soundUrl else {return}
         do{
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .defaultToSpeaker)
-            let player = AVPlayer(url: url)
-            player.volume = 1
-            player.play()
+            globalAudioPlayer = try AVAudioPlayer(contentsOf: url)
+            globalAudioPlayer?.volume = 1
+            globalAudioPlayer?.prepareToPlay()
+            globalAudioPlayer?.play()
         }catch let e{
             print(#function, #line, e)
         }
+        
     }
 }
