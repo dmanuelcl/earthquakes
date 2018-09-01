@@ -16,7 +16,7 @@ struct Settings {
     
     /// maximum number of results to fetch, can be udated in App Settings > Earthquakes > Results
     var maxResults: Int{
-        let defaultValue = 5
+        let defaultValue = 20
         var maxResults = UserDefaults.standard.integer(forKey: "search_max_results_preference")
         if maxResults == 0{
             UserDefaults.standard.set(defaultValue, forKey: "search_max_results_preference")
@@ -28,7 +28,7 @@ struct Settings {
     
     /// Distance maximum for the searches, can be udated in App Settings > Earthquakes > Disatnce
     var distance: Int{
-        let defaultValue = 100
+        let defaultValue = 1000
         var distance = UserDefaults.standard.integer(forKey: "search_distance_preference")
         if distance == 0{
             UserDefaults.standard.set(defaultValue, forKey: "search_distance_preference")
@@ -40,7 +40,7 @@ struct Settings {
     
     /// The maximum antiquity of events, can be udated in App Settings > Earthquakes > Hours ago
     var hoursAgo: Int{
-        let defaultValue = 1
+        let defaultValue = 35000
         var hoursAgo = UserDefaults.standard.integer(forKey: "search_hours_preference")
         if hoursAgo == 0{
             UserDefaults.standard.set(defaultValue, forKey: "search_hours_preference")

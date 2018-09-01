@@ -377,6 +377,7 @@ extension MapViewController: SearchViewControllerDelegate{
     }
     
     func searchView(_ searchViewController: SearchViewController, didSelectCoordinate coordinate: CLLocationCoordinate2D) {
+        searchViewController.dismiss(animated: true, completion: nil)
         self.search(forLatitude: coordinate.latitude, longitude: coordinate.longitude)
     }
 }
