@@ -27,6 +27,7 @@ class EarthquakeSheetView: SheetView {
         self.dataSource = dataSource
         super.init(frame: .zero)
         self.closeOnTap = false
+        self.allowTapRecognizer = false
         self.setupTableView()
     }
     
@@ -62,10 +63,6 @@ extension EarthquakeSheetView: UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.callDelegate(forModelAt: indexPath.row)
-    }
-    
-    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         self.callDelegate(forModelAt: indexPath.row)
     }
     
