@@ -12,6 +12,9 @@
 		0F381290213A2AB300DC36B0 /* Earthquake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F38128F213A2AB300DC36B0 /* Earthquake.swift */; };
 		0F48C64D213A2F30009E28EC /* EarthquakeExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F48C64C213A2F30009E28EC /* EarthquakeExtensionTests.swift */; };
 		0F48C651213A3989009E28EC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F48C653213A3989009E28EC /* Localizable.strings */; };
+		0F5EAF0F213A4064001BFBA9 /* MapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EAF0E213A4064001BFBA9 /* MapViewControllerTests.swift */; };
+		0F5EAF12213A516A001BFBA9 /* EarthquakesDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EAF11213A516A001BFBA9 /* EarthquakesDataSourceProtocol.swift */; };
+		0F5EAF14213A52A7001BFBA9 /* EarthquakeSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EAF13213A52A7001BFBA9 /* EarthquakeSheetView.swift */; };
 		0F669275213A32670058D1A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F669274213A32670058D1A6 /* AppDelegate.swift */; };
 		0F669277213A32670058D1A6 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F669276213A32670058D1A6 /* MapViewController.swift */; };
 		0F66927A213A32670058D1A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F669278213A32670058D1A6 /* Main.storyboard */; };
@@ -120,6 +123,9 @@
 		0F38128F213A2AB300DC36B0 /* Earthquake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Earthquake.swift; sourceTree = "<group>"; };
 		0F48C64C213A2F30009E28EC /* EarthquakeExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeExtensionTests.swift; sourceTree = "<group>"; };
 		0F48C652213A3989009E28EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0F5EAF0E213A4064001BFBA9 /* MapViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerTests.swift; sourceTree = "<group>"; };
+		0F5EAF11213A516A001BFBA9 /* EarthquakesDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakesDataSourceProtocol.swift; sourceTree = "<group>"; };
+		0F5EAF13213A52A7001BFBA9 /* EarthquakeSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeSheetView.swift; sourceTree = "<group>"; };
 		0F669271213A32670058D1A6 /* Earthquakes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Earthquakes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F669274213A32670058D1A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F669276213A32670058D1A6 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -228,6 +234,14 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
+		0F5EAF10213A514F001BFBA9 /* EarthquakesList */ = {
+			isa = PBXGroup;
+			children = (
+				0F5EAF11213A516A001BFBA9 /* EarthquakesDataSourceProtocol.swift */,
+			);
+			path = EarthquakesList;
+			sourceTree = "<group>";
+		};
 		0F669268213A32670058D1A6 = {
 			isa = PBXGroup;
 			children = (
@@ -256,6 +270,7 @@
 		0F669273213A32670058D1A6 /* Earthquakes */ = {
 			isa = PBXGroup;
 			children = (
+				0F5EAF10213A514F001BFBA9 /* EarthquakesList */,
 				0F48C64E213A388C009E28EC /* Localization */,
 				0F66930C213A32670058D1A6 /* Extensions */,
 				0F66930B213A32670058D1A6 /* UI */,
@@ -275,6 +290,7 @@
 				0F669289213A32670058D1A6 /* EarthquakesTests.swift */,
 				0F66928B213A32670058D1A6 /* Info.plist */,
 				0F48C64C213A2F30009E28EC /* EarthquakeExtensionTests.swift */,
+				0F5EAF0E213A4064001BFBA9 /* MapViewControllerTests.swift */,
 			);
 			path = EarthquakesTests;
 			sourceTree = "<group>";
@@ -416,6 +432,7 @@
 			children = (
 				0F38128A213A260000DC36B0 /* EarthquakeCell */,
 				0F669309213A32670058D1A6 /* SheetView.swift */,
+				0F5EAF13213A52A7001BFBA9 /* EarthquakeSheetView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -680,7 +697,9 @@
 				0F669277213A32670058D1A6 /* MapViewController.swift in Sources */,
 				0F66930E213A32670058D1A6 /* UIView+IBDesignable.swift in Sources */,
 				0F381290213A2AB300DC36B0 /* Earthquake.swift in Sources */,
+				0F5EAF14213A52A7001BFBA9 /* EarthquakeSheetView.swift in Sources */,
 				0F38128C213A261500DC36B0 /* EarthquakeCell.swift in Sources */,
+				0F5EAF12213A516A001BFBA9 /* EarthquakesDataSourceProtocol.swift in Sources */,
 				0F66930A213A32670058D1A6 /* SheetView.swift in Sources */,
 				0F669275213A32670058D1A6 /* AppDelegate.swift in Sources */,
 			);
@@ -690,6 +709,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F5EAF0F213A4064001BFBA9 /* MapViewControllerTests.swift in Sources */,
 				0F48C64D213A2F30009E28EC /* EarthquakeExtensionTests.swift in Sources */,
 				0F66928A213A32670058D1A6 /* EarthquakesTests.swift in Sources */,
 			);
