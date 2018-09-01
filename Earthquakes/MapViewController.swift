@@ -64,7 +64,9 @@ class MapViewController: UIViewController {
     }
     
     func refreshData(){
-        self.refreshMapAnnotations()
+        DispatchQueue.main.async {
+            self.refreshMapAnnotations()
+        }
     }
     
     func refreshMapAnnotations() {
@@ -222,11 +224,14 @@ extension MapViewController: MKMapViewDelegate{
         }
         
         let anotationIdentifier = String(describing: MKPinAnnotationView.self)
-        let anotationView = self.map.dequeueReusableAnnotationView(withIdentifier: anotationIdentifier, for: annotation)
+        var anotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: anotationIdentifier)
+        if let _anotationView = self.map.dequeueReusableAnnotationView(withIdentifier: anotationIdentifier, for: annotation) as? MKPinAnnotationView{
+            anotationView = _anotationView
+        }
         
         anotationView.canShowCallout = true
-        anotationView.image = annotation.earthquake.magnitudeImage
-        
+        anotationView.animatesDrop = true
+        anotationView.pinTintColor = annotation.earthquake.magnitudeColor
         return anotationView
     }
 }
