@@ -18,12 +18,26 @@ class EarthquakesDataSource: EarthquakesDataSourceProtocol{
     
     var earthquakes: [Earthquake] = []
     
+    private let dataProvider: EarthquakesDataProvider
+    
+    init(dataProvider: EarthquakesDataProvider) {
+        self.dataProvider = dataProvider
+    }
+    
     func fetchEarthquakesIn(longitude: Double, latitude: Double, completion: @escaping ([Earthquake]) -> Void) {
-        
+        self.currentSearchCoordiate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        self.dataProvider.getEarthquakes(longitude: longitude, latitude: latitude) { (earthquakes) in
+            self.earthquakes = earthquakes
+            completion(earthquakes)
+        }
     }
     
     func fetchEarthquakesFor(magnitude: EarthquakeMagnitude, completion: @escaping ([Earthquake]) -> Void) {
-        
+        self.currentMagnitude = magnitude
+        self.dataProvider.getEarthquakes(maginute: magnitude) { (earthquakes) in
+            self.earthquakes = earthquakes
+            completion(earthquakes)
+        }
     }
     
 }
