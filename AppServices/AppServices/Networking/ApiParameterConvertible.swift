@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol ApiParameterConvertible {
-    func apiParameters() -> [AnyHashable: Any]
+    func apiParameters() -> String
 }

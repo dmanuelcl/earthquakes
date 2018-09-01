@@ -16,35 +16,22 @@ enum ApiParameter: ApiParameterConvertible {
     case limit(Int)
     case minmagnitude(Double)
     
-    func apiParameters() -> [AnyHashable : Any] {
+    func apiParameters() -> String {
         switch self {
         case .starttime(let date):
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZ"
-            return ["starttime": dateFormatter.string(from: date)]
+            return "starttime=\(dateFormatter.string(from: date))"
         case .latitude(let latitude):
-            return ["latitude": latitude]
+            return "latitude=\(latitude)" 
         case .longitude(let longitude):
-            return ["longitude": longitude]
+            return "longitude=\(longitude)"
         case .maxradiuskm(let km):
-            return ["maxradiuskm": km]
+            return "maxradiuskm=\(km)"
         case .limit(let limit):
-            return ["limit": limit]
+            return "limit=\(limit)"
         case .minmagnitude(let magnitude):
-            return ["minmagnitude": magnitude]
+            return "minmagnitude=\(magnitude)"
         }
-    }
-}
-
-extension Array: ApiParameterConvertible where Element: ApiParameterConvertible{
-    public func apiParameters() -> [AnyHashable : Any] {
-        var parameters: [AnyHashable : Any] = [:]
-        for element in self{
-            element.apiParameters().forEach { (args) in
-                let (key, value) = args
-                parameters[key] = value
-            }
-        }
-        return parameters
     }
 }
