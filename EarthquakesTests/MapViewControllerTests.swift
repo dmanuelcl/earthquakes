@@ -65,6 +65,27 @@ class MapViewControllerTests: XCTestCase {
         super.tearDown()
     }
     
+    func testReloadDataCallTeRightDataSourceMethod() {
+        guard let viewController = self.viewController else {
+            return
+        }
+        let dataSourceSpy = EarthquakesDataSourceSpy()
+        viewController.dataSource = dataSourceSpy
+        viewController.reloadData(self)
+        
+        if viewController.searchButton.isSelected{
+            XCTAssertTrue(dataSourceSpy.isFetchEarthquakesInCalled, "On reloadData(:) If the searchButton is selected the dataSource.fetchEarthquakesIn(longitude:latitude:completion) method must be called ")
+        }
+        
+        if viewController.currentLocationButton.isSelected{
+            XCTAssertTrue(dataSourceSpy.isFetchEarthquakesInCalled, "On reloadData(:) If the searchButton is selected the dataSource.fetchEarthquakesIn(longitude:latitude:completion) method must be called ")
+        }
+        
+        if viewController.magnitudeButton.isSelected{
+            XCTAssertTrue(dataSourceSpy.isFetchEarthquakesInCalled, "On reloadData(:) If the searchButton is selected the dataSource.fetchEarthquakesFor(magnitude:completion) method must be called ")
+        }
+    }
+    
     func testSearchForCurrentLocationCallDataSourceMethod() {
         guard let viewController = self.viewController else {
             return
@@ -72,9 +93,8 @@ class MapViewControllerTests: XCTestCase {
         let dataSourceSpy = EarthquakesDataSourceSpy()
         viewController.dataSource = dataSourceSpy
         viewController.searchForCurrentLocation(self)
-        XCTAssertTrue(dataSourceSpy.isFetchEarthquakesInCalled, "On searchForCurrentLocation(:) the dataSource.fetchEarthquakesIn(longitude:latitude:completion) must be called ")
+        XCTAssertTrue(dataSourceSpy.isFetchEarthquakesInCalled, "On searchForCurrentLocation(:) the dataSource.fetchEarthquakesIn(longitude:latitude:completion) method must be called ")
     }
-    
     
     func testSearchForMagnitudeUpdateButtonsStatus() {
         guard let viewController = self.viewController else {
