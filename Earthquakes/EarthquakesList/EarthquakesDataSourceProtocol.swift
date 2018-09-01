@@ -8,10 +8,14 @@
 
 import Foundation
 import AppDomain
+import MapKit
 
 
 /// Allow fetch earquakes may be used from UIViewController
 protocol EarthquakesDataSourceProtocol {
+    
+    /// The coordinate used in te most recent search
+    var currentSearchCoordiate: CLLocationCoordinate2D? {get}
     
     /// Current earthquakes
     var earthquakes: [Earthquake] {get}
@@ -35,7 +39,7 @@ protocol EarthquakesDataSourceProtocol {
 
 
 
-// MARK: - Add default implementation for UITableViewDataSource to calses that conform to EarthquakesDataSourceProtocol && UITableViewDataSource
+// MARK: - Add default implementation for EarthquakesDataSourceProtocol if te receiver conform to UITableViewDataSource
 extension EarthquakesDataSourceProtocol where Self: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.earthquakes.count
