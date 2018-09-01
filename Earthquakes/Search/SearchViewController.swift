@@ -15,6 +15,9 @@ protocol SearchViewControllerDelegate: class {
     func searchView(didFailed searchViewController: SearchViewController)
 }
 
+
+
+/// Allow search for place or address
 class SearchViewController: UIViewController {
     
     
@@ -34,12 +37,15 @@ class SearchViewController: UIViewController {
         self.searchResultsTableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellReuseIdentifier)
     }
     
+    
     @IBAction func cancel(_ sender: AnyObject){
         self.delegate?.searchView(didCancel: self)
     }
     
 }
 
+
+// MARK: - UISearchBarDelegate conformance
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -48,6 +54,8 @@ extension SearchViewController: UISearchBarDelegate {
     }
 }
 
+
+// MARK: - MKLocalSearchCompleterDelegate conformance
 extension SearchViewController: MKLocalSearchCompleterDelegate {
     
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
@@ -61,6 +69,8 @@ extension SearchViewController: MKLocalSearchCompleterDelegate {
     }
 }
 
+
+// MARK: - UITableViewDataSource conformance
 extension SearchViewController: UITableViewDataSource {
     
     /**
@@ -101,6 +111,8 @@ extension SearchViewController: UITableViewDataSource {
     }
 }
 
+
+// MARK: - UITableViewDelegate conformance
 extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

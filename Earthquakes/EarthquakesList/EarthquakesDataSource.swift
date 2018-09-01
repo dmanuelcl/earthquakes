@@ -10,12 +10,17 @@ import UIKit
 import AppDomain
 import MapKit
 
+
 class EarthquakesDataSource: NSObject, EarthquakesDataSourceProtocol{
     
+    //The last coordinate used for serach
     var currentSearchCoordiate: CLLocationCoordinate2D? = nil
     
+    //The las magnitude used for search
     var currentMagnitude: EarthquakeMagnitude? = nil
     
+    
+    /// Result of the last search
     var earthquakes: [Earthquake] = []
     
     private let dataProvider: EarthquakesDataProvider
@@ -24,6 +29,12 @@ class EarthquakesDataSource: NSObject, EarthquakesDataSourceProtocol{
         self.dataProvider = dataProvider
     }
     
+    /// Get every earthquakes who have taken place near the given location
+    ///
+    /// - Parameters:
+    ///   - longitude: Longitude to create the search location
+    ///   - latitude: Latitude to create the search location
+    ///   - completion: Invoked with the results obtained
     func fetchEarthquakesIn(longitude: Double, latitude: Double, completion: @escaping ([Earthquake]) -> Void) {
         self.currentSearchCoordiate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         self.dataProvider.getEarthquakes(longitude: longitude, latitude: latitude) { (earthquakes) in
@@ -32,6 +43,12 @@ class EarthquakesDataSource: NSObject, EarthquakesDataSourceProtocol{
         }
     }
     
+    
+    /// Get every earthquakes based on its magnitude
+    ///
+    /// - Parameters:
+    ///   - maginute: Earthquakes magnitude to filter
+    ///   - completion: Invoked with the results obtained
     func fetchEarthquakesFor(magnitude: EarthquakeMagnitude, completion: @escaping ([Earthquake]) -> Void) {
         self.currentMagnitude = magnitude
         self.dataProvider.getEarthquakes(maginute: magnitude) { (earthquakes) in

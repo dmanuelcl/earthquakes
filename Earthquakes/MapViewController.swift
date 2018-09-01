@@ -14,6 +14,8 @@ class EarthquakePointAnnotation: MKPointAnnotation {
     var earthquake: Earthquake!
 }
 
+
+/// Is the main scene of the app, shows the map and controls available
 class MapViewController: UIViewController {
     
     //MARK: - IBOutlet
@@ -28,9 +30,15 @@ class MapViewController: UIViewController {
     private let dateFormatter = DateFormatter()
     var dataSource: EarthquakesDataSourceProtocol!
     
+    
+    /// Alert to show the message for location authorization
     var locationAlert: UIAlertController?
     
+    //Used to display the list of Earthquakes
     var earthquakesSheetView: EarthquakeSheetView!
+    
+    
+    /// Loading view indicator
     var loadingView: LoadingView = LoadingView()
     
     override func viewDidLoad() {
@@ -50,6 +58,8 @@ class MapViewController: UIViewController {
         }
     }
     
+    
+    /// Preparate the earthquakesSheetView to display the list of Earthquakes
     func setupEarthquakeSheetView(){
         self.earthquakesSheetView = EarthquakeSheetView(dataSource: self.dataSource as! EarthquakeSheetViewDataSource)
         self.earthquakesSheetView.sheetHeight = UIScreen.main.bounds.height * 0.75
@@ -58,6 +68,8 @@ class MapViewController: UIViewController {
         self.earthquakesSheetView.earthquakDelegate = self
     }
     
+    
+    /// Configure the map amnd location manager to handle the user's ubication
     func setupMap(){
         //Setup location manager
         self.locationManager = CLLocationManager()
@@ -74,12 +86,18 @@ class MapViewController: UIViewController {
         }
     }
     
+    
+    /// Center the map based on the given coordinate
+    ///
+    /// - Parameter coordinate: The coordinate to center the map
     func centerMap(in coordinate: CLLocationCoordinate2D){
         DispatchQueue.main.async {
             self.map.setRegion(MKCoordinateRegion.init(center: coordinate, span: MKCoordinateSpan.init(latitudeDelta: 10, longitudeDelta: 10)), animated: true)
         }
     }
     
+    
+    /// Refresh te current data reload the list of Earthquakes as well as the map annotations
     func refreshData(){
         DispatchQueue.main.async {
             self.loadingView.hide()
@@ -90,6 +108,8 @@ class MapViewController: UIViewController {
         }
     }
     
+    
+    /// Update the map annotations, replace the old annotations and add new based en the current list of Earthquakes
     func refreshMapAnnotations() {
         
         // Remove the old anotations
@@ -119,12 +139,21 @@ class MapViewController: UIViewController {
         }
     }
     
+    
+    /// Update the status of the buttons for the search options
+    ///
+    /// - Parameters:
+    ///   - searchByMagnitude: Define if the magnitudeButton shuld be selected
+    ///   - searchByLocation: Define if the searchButton shuld be selected
+    ///   - searchByCurrentLocation: Define if the currentLocationButton shuld be selected
     func updateButtonStatus(searchByMagnitude: Bool, searchByLocation: Bool, searchByCurrentLocation: Bool){
         self.magnitudeButton.isSelected = searchByMagnitude
         self.currentLocationButton.isSelected = searchByCurrentLocation
         self.searchButton.isSelected = searchByLocation
     }
     
+    
+    /// Check if is needed show the earthquakesSheetView
     func displayEarthSheetViewIfNeeded(){
         if self.dataSource.earthquakes.count > 0{
             self.earthquakesSheetView.hideOnClosed = false
@@ -132,11 +161,17 @@ class MapViewController: UIViewController {
         }
     }
     
+    
+    /// Hide the earthquakesSheetView
     func hideEarthSheetView(){
         self.earthquakesSheetView.hideOnClosed = true
         self.earthquakesSheetView.close()
     }
     
+    
+    /// Create a search for the given magnitude
+    ///
+    /// - Parameter magnitude: magnitude used for search
     func search(forMagnitude magnitude: EarthquakeMagnitude){
         self.loadingView.display()
         self.dataSource.fetchEarthquakesFor(magnitude: magnitude) {[unowned self] _ in
@@ -147,6 +182,12 @@ class MapViewController: UIViewController {
         }
     }
     
+    
+    /// Create a search using the  latitude and longitude
+    ///
+    /// - Parameters:
+    ///   - latitude: Latitude
+    ///   - longitude: Longitude
     func search(forLatitude latitude: Double, longitude: Double){
         self.loadingView.display()
         self.dataSource.fetchEarthquakesIn(longitude: longitude, latitude: latitude) {[unowned self] _ in
@@ -156,6 +197,8 @@ class MapViewController: UIViewController {
         }
     }
     
+    
+    /// Present a UIAlertController with style actionSheet to select the magnitude for the search
     func presentMagnitudeSelectionAlertController(){
         let title = NSLocalizedString("magnitude_selection_alert_title", comment: "Alert title")
         let message = NSLocalizedString("magnitude_selection_alert_description", comment: "Alert message")
@@ -197,6 +240,8 @@ class MapViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    
+    /// Present a SearchViewController to search by place or address
     func presentSearchViewController(){
         self.hideEarthSheetView()
         let searchViewController = UIStoryboard.init(name: "Main", bundle: nil)
@@ -206,6 +251,7 @@ class MapViewController: UIViewController {
         navigationController.isNavigationBarHidden = false
         self.present(navigationController, animated: true, completion: nil)
     }
+    
     
     @IBAction func searchForCurrentLocation(_ sender: AnyObject){
         self.updateButtonStatus(searchByMagnitude: false, searchByLocation: false, searchByCurrentLocation: true)
@@ -223,6 +269,9 @@ class MapViewController: UIViewController {
         self.presentSearchViewController()
     }
     
+    
+    /// Reload the data using the las search configuration
+    /// 
     @IBAction func reloadData(_ sender: AnyObject){
         if self.searchButton.isSelected{
             guard let lastCoordinate = self.dataSource.currentSearchCoordiate else {

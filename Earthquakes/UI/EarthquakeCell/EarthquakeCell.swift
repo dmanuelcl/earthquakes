@@ -9,6 +9,8 @@
 import UIKit
 import AppDomain
 
+
+/// Represent a Earthquake in the list of results
 class EarthquakeCell: UITableViewCell{
     @IBOutlet weak var magnitudeIndicator: UIView!
     @IBOutlet weak var containerView: UIView!
@@ -18,6 +20,10 @@ class EarthquakeCell: UITableViewCell{
     
     let dateFormatter = DateFormatter()
     
+    
+    /// Configure the cell based on the Earthquake data
+    ///
+    /// - Parameter model: The model that will use to show the information 
     func configure(with model: Earthquake){
         self.dateFormatter.dateFormat = "MMMM dd, yyyy, hh:mm:ss a"
         self.placeLabel.text = model.place

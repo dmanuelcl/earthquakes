@@ -15,6 +15,8 @@ protocol EarthquakeSheetViewDelegate: class {
     func sheetView(_ sheetView: EarthquakeSheetView, didSelectEarthquake earthquake: Earthquake)
 }
 
+
+/// Display a list of Earthquake
 class EarthquakeSheetView: SheetView {
     
     private var tableView: UITableView!

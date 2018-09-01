@@ -11,6 +11,8 @@ import AppDomain
 import AVFoundation
 
 extension Earthquake{
+    
+    /// Return an UIColor based on eqrthquake magnitude
     var magnitudeColor: UIColor{
         guard let magnitude = self.magnitude else {
             return UIColor.gray
@@ -27,6 +29,8 @@ extension Earthquake{
         }
     }
     
+    
+    /// Return an UIImage based on eqrthquake magnitude
     var magnitudeImage: UIImage{
         guard let magnitude = self.magnitude else {
             return #imageLiteral(resourceName: "map_pin_gray")
