@@ -16,7 +16,16 @@ public struct UsgsApiManager: ApiManager {
     let webServiceEndPoint = "query"
     let format = "?format=geojson&"
     
-    public func requestData(withParameters parameter: [ApiParameterConvertible], completion: @escaping (Error?, Data?) -> Void){
+    public func requestData(withParameters parameters: [ApiParameterConvertible], completion: @escaping (Error?, Data?) -> Void){
         
+        let parametersString = parameters.map({$0.apiParameters()}).joined(separator: "&")
+        let urlPathComponent = self.webServiceEndPoint + format + parametersString
+        
+        let url = URL(string: self.baseURL + urlPathComponent)!
+        let urlRequest = URLRequest(url: url, timeoutInterval: 30.0)
+        let task = URLSession.shared.dataTask(with: urlRequest) { (data, _, error) in
+            completion(error, data)
+        }
+        task.resume()
     }
 }
