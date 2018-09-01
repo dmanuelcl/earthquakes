@@ -11,7 +11,7 @@ import AppDomain
 
 
 
-// MARK: - Add conformance to Decodable
+// MARK: - Add conformance to Decodable to allow map the api response to Earthquake objects
 extension Earthquake: Decodable {
     
     private enum CodingKeys: String, CodingKey {

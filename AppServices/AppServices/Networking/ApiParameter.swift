@@ -8,6 +8,15 @@
 
 import Foundation
 
+
+/// Avalibale paramaters to use in api calls
+///
+/// - starttime: Limit to events on or after the specified start time.
+/// - latitude: Specify the latitude to be used for a radius search
+/// - longitude: Specify the longitude to be used for a radius search
+/// - maxradiuskm: Limit to events within the specified maximum number of kilometers from the geographic point defined by the latitude and longitude parameters
+/// - limit: Limit the results to the specified number of events
+/// - minmagnitude: Limit to events with a magnitude larger than the specified minimum
 enum ApiParameter: ApiParameterConvertible {
     case starttime(Date)
     case latitude(Double)
