@@ -32,6 +32,7 @@ class MapViewController: UIViewController {
     var locationAlert: UIAlertController?
     
     var earthquakesSheetView: EarthquakeSheetView!
+    var loadingView: LoadingView = LoadingView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,6 +83,7 @@ class MapViewController: UIViewController {
     
     func refreshData(){
         DispatchQueue.main.async {
+            self.loadingView.hide()
             self.refreshMapAnnotations()
             self.earthquakesSheetView.reloadData()
             let shouldHide = self.dataSource.earthquakes.count == 0
@@ -131,6 +133,7 @@ class MapViewController: UIViewController {
     
     
     func search(forMagnitude magnitude: EarthquakeMagnitude){
+        self.loadingView.display()
         self.dataSource.fetchEarthquakesFor(magnitude: magnitude) {[unowned self] _ in
             if let coordinate = self.locationManager.location?.coordinate {
                 self.centerMap(in: coordinate)
@@ -140,6 +143,7 @@ class MapViewController: UIViewController {
     }
     
     func search(forLatitude latitude: Double, longitude: Double){
+        self.loadingView.display()
         self.dataSource.fetchEarthquakesIn(longitude: longitude, latitude: latitude) {[unowned self] _ in
             let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             self.centerMap(in: coordinate)

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F1D215A213B03E000D22E07 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1D2159213B03E000D22E07 /* LoadingView.swift */; };
 		0F38128C213A261500DC36B0 /* EarthquakeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F38128B213A261500DC36B0 /* EarthquakeCell.swift */; };
 		0F38128E213A263900DC36B0 /* EarthquakeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F38128D213A263900DC36B0 /* EarthquakeCell.xib */; };
 		0F381290213A2AB300DC36B0 /* Earthquake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F38128F213A2AB300DC36B0 /* Earthquake.swift */; };
@@ -120,6 +121,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0F1D2159213B03E000D22E07 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		0F38128B213A261500DC36B0 /* EarthquakeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeCell.swift; sourceTree = "<group>"; };
 		0F38128D213A263900DC36B0 /* EarthquakeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EarthquakeCell.xib; sourceTree = "<group>"; };
 		0F38128F213A2AB300DC36B0 /* Earthquake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Earthquake.swift; sourceTree = "<group>"; };
@@ -439,6 +441,7 @@
 				0F38128A213A260000DC36B0 /* EarthquakeCell */,
 				0F669309213A32670058D1A6 /* SheetView.swift */,
 				0F5EAF13213A52A7001BFBA9 /* EarthquakeSheetView.swift */,
+				0F1D2159213B03E000D22E07 /* LoadingView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -703,6 +706,7 @@
 				0F669277213A32670058D1A6 /* MapViewController.swift in Sources */,
 				0F5EAF16213AD038001BFBA9 /* EarthquakesDataSource.swift in Sources */,
 				0F66930E213A32670058D1A6 /* UIView+IBDesignable.swift in Sources */,
+				0F1D215A213B03E000D22E07 /* LoadingView.swift in Sources */,
 				0F381290213A2AB300DC36B0 /* Earthquake.swift in Sources */,
 				0F5EAF14213A52A7001BFBA9 /* EarthquakeSheetView.swift in Sources */,
 				0F38128C213A261500DC36B0 /* EarthquakeCell.swift in Sources */,
