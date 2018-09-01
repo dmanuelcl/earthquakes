@@ -10,6 +10,7 @@ import UIKit
 import AppDomain
 
 typealias EarthquakeSheetViewDataSource = UITableViewDataSource & EarthquakesDataSourceProtocol
+
 protocol EarthquakeSheetViewDelegate: class {
     func sheetView(_ sheetView: EarthquakeSheetView, didSelectEarthquake earthquake: Earthquake)
 }

@@ -25,6 +25,7 @@ class MapViewController: UIViewController {
     
     //MARK: - Attrs
     private var locationManager: CLLocationManager!
+    private var currentAnnotations: [EarthquakePointAnnotation] = []
     private let dateFormatter = DateFormatter()
     var dataSource: EarthquakesDataSourceProtocol!
     
@@ -54,6 +55,7 @@ class MapViewController: UIViewController {
         self.earthquakesSheetView.sheetHeight = UIScreen.main.bounds.height * 0.75
         self.earthquakesSheetView.initialHeight = UIScreen.main.bounds.height * 0.25
         self.earthquakesSheetView.hideOnClosed = true
+        self.earthquakesSheetView.earthquakDelegate = self
     }
     
     func setupMap(){
@@ -74,7 +76,7 @@ class MapViewController: UIViewController {
     
     func centerMap(in coordinate: CLLocationCoordinate2D){
         DispatchQueue.main.async {
-            self.map.setCenter(coordinate, animated: true)
+            self.map.setRegion(MKCoordinateRegion.init(center: coordinate, span: MKCoordinateSpan.init(latitudeDelta: 10, longitudeDelta: 10)), animated: true)
         }
     }
     
@@ -96,7 +98,7 @@ class MapViewController: UIViewController {
         
         // Remove the old anotations
         self.map.removeAnnotations(self.map.annotations)
-        
+        self.currentAnnotations.removeAll()
         // Add new annotations...
         for earthquake in self.dataSource.earthquakes {
             let pointAnotation = EarthquakePointAnnotation()
@@ -107,7 +109,6 @@ class MapViewController: UIViewController {
                 latitude: earthquake.latitude,
                 longitude: earthquake.longitude)
             
-            
             let date = self.dateFormatter.string(from: earthquake.time)
             
             pointAnotation.title = earthquake.place
@@ -117,7 +118,7 @@ class MapViewController: UIViewController {
             }else{ let subtitle = NSLocalizedString("map_anotation_without_magnitude_details", comment: "Anotation subtitle")
                 pointAnotation.subtitle = String.init(format: subtitle, date)
             }
-            
+            self.currentAnnotations.append(pointAnotation)
             self.map.addAnnotation(pointAnotation)
         }
     }
@@ -269,5 +270,27 @@ extension MapViewController: MKMapViewDelegate{
         anotationView.animatesDrop = true
         anotationView.pinTintColor = annotation.earthquake.magnitudeColor
         return anotationView
+    }
+}
+
+extension MapViewController: EarthquakeSheetViewDelegate{
+    func sheetView(_ sheetView: EarthquakeSheetView, didSelectEarthquake earthquake: Earthquake) {
+        let coordinate = CLLocationCoordinate2D(latitude: earthquake.latitude, longitude: earthquake.longitude)
+        self.centerMap(in: coordinate)
+        //FIXME: - This is not the best way to perform this, fix me
+        let annotation = self.currentAnnotations.first { (annotation) -> Bool in
+            let annotationEarthquake = annotation.earthquake
+            let isTheSame =
+                annotationEarthquake?.time == earthquake.time &&
+                annotationEarthquake?.place == earthquake.place &&
+                annotationEarthquake?.latitude == earthquake.latitude &&
+                annotationEarthquake?.longitude == earthquake.longitude
+            
+            return isTheSame
+        }
+        if let annotationToSelect = annotation{
+            self.map.selectAnnotation(annotationToSelect, animated: true)
+        }
+        self.earthquakesSheetView.close()
     }
 }
