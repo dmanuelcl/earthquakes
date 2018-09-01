@@ -12,7 +12,7 @@ import XCTest
 
 struct ApiManagerMock: ApiManager {
     static let share = ApiManagerMock()
-    func requestData(withParameters parameter: [ApiParameterConvertible], completion: @escaping (Error?, Data?) -> Void) {
+    func requestData(withParameters parameters: [ApiParameterConvertible], completion: @escaping (Error?, Data?) -> Void) {
         completion(nil, nil)
     }
     

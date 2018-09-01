@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol ApiManager {
-    func requestData(withParameters parameter: [ApiParameterConvertible], completion: @escaping (Error?, Data?) -> Void)
+    func requestData(withParameters parameters: [ApiParameterConvertible], completion: @escaping (Error?, Data?) -> Void)
 }
