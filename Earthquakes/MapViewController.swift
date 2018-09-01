@@ -73,7 +73,9 @@ class MapViewController: UIViewController {
     }
     
     func centerMap(in coordinate: CLLocationCoordinate2D){
-        self.map.setCenter(coordinate, animated: true)
+        DispatchQueue.main.async {
+            self.map.setCenter(coordinate, animated: true)
+        }
     }
     
     func refreshData(){
@@ -129,12 +131,17 @@ class MapViewController: UIViewController {
     
     func search(forMagnitude magnitude: EarthquakeMagnitude){
         self.dataSource.fetchEarthquakesFor(magnitude: magnitude) {[unowned self] _ in
+            if let coordinate = self.locationManager.location?.coordinate {
+                self.centerMap(in: coordinate)
+            }
             self.refreshData()
         }
     }
     
     func search(forLatitude latitude: Double, longitude: Double){
         self.dataSource.fetchEarthquakesIn(longitude: longitude, latitude: latitude) {[unowned self] _ in
+            let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            self.centerMap(in: coordinate)
             self.refreshData()
         }
     }
