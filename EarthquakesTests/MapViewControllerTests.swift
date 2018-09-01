@@ -76,10 +76,8 @@ class MapViewControllerTests: XCTestCase {
         }
         let dataSourceSpy = EarthquakesDataSourceSpy()
         viewController.dataSource = dataSourceSpy
-        print(#function, #line, viewController.searchButton.isSelected, viewController.currentLocationButton.isSelected, viewController.magnitudeButton.isSelected)
         viewController.reloadData(self)
         
-        print(#function, #line, viewController.searchButton.isSelected, viewController.currentLocationButton.isSelected, viewController.magnitudeButton.isSelected)
         if viewController.searchButton.isSelected{
             XCTAssertTrue(dataSourceSpy.isFetchEarthquakesInCalled, "On reloadData(:) If the searchButton is selected the dataSource.fetchEarthquakesIn(longitude:latitude:completion) method must be called ")
         }

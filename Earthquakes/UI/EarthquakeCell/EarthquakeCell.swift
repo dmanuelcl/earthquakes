@@ -11,6 +11,7 @@ import AppDomain
 
 class EarthquakeCell: UITableViewCell{
     @IBOutlet weak var magnitudeIndicator: UIView!
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var magnitudeLabel: UILabel!
     @IBOutlet weak var placeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -21,7 +22,7 @@ class EarthquakeCell: UITableViewCell{
         self.dateFormatter.dateFormat = "MMMM dd, yyyy, hh:mm:ss a"
         self.placeLabel.text = model.place
         self.magnitudeIndicator.backgroundColor = model.magnitudeColor
-        self.magnitudeLabel.textColor = model.magnitudeColor
+        self.containerView.backgroundColor = model.magnitudeColor.withAlphaComponent(0.20)
         if let magnitude = model.magnitude{
             self.magnitudeLabel.text = String(magnitude.magnitude)
         }else{
@@ -33,6 +34,5 @@ class EarthquakeCell: UITableViewCell{
     override func prepareForReuse() {
         self.magnitudeIndicator.backgroundColor = UIColor.gray
         self.magnitudeLabel.text = "-"
-        self.magnitudeLabel.textColor = self.magnitudeIndicator.backgroundColor
     }
 }

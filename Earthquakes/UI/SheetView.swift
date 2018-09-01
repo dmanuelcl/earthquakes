@@ -3,7 +3,7 @@
 //
 //
 //  Created by Dani Manuel Céspedes Lara on 8/15/18.
-//  Copyright © 2018 SpeakSlow. All rights reserved.
+//  Copyright © 2018 Dani Manuel Céspedes Lara. All rights reserved.
 //
 
 import UIKit
@@ -95,7 +95,7 @@ class SheetView: UIView {
     }()
 
     private lazy var defaultIndicatorView: UIView = {
-        let view = UIView(frame: CGRect.init(x: 0, y: 0, width: 45, height: 8))
+        let view = UIView(frame: CGRect.init(x: 0, y: 0, width: 50, height: 8))
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.1
         view.layer.shadowRadius = 2
@@ -187,7 +187,7 @@ class SheetView: UIView {
         self.indicatorView.centerXAnchor.constraint(equalTo: self.sheetView.centerXAnchor).isActive = true
         self.indicatorView.heightAnchor.constraint(equalToConstant: self.indicatorView.frame.height).isActive = true
         self.indicatorView.widthAnchor.constraint(equalToConstant: self.indicatorView.frame.width).isActive = true
-        let indicatorTopConstant: CGFloat = self.indicatorView == self.defaultIndicatorView ? 8 : 0
+        let indicatorTopConstant: CGFloat = self.indicatorView == self.defaultIndicatorView ? 10 : 0
         self.indicatorView.topAnchor.constraint(equalTo: self.sheetView.topAnchor, constant: indicatorTopConstant).isActive = true
 
         self.sheetView.addSubview(self.containerView)

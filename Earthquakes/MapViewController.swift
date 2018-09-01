@@ -39,8 +39,21 @@ class MapViewController: UIViewController {
         self.setupEarthquakeSheetView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.earthquakesSheetView.install()
+        if self.dataSource.earthquakes.count == 0{
+            self.earthquakesSheetView.close()
+        }else{
+            self.earthquakesSheetView.open()
+        }
+    }
+    
     func setupEarthquakeSheetView(){
-        
+        self.earthquakesSheetView = EarthquakeSheetView(dataSource: self.dataSource as! UITableViewDataSource)
+        self.earthquakesSheetView.sheetHeight = UIScreen.main.bounds.height * 0.75
+        self.earthquakesSheetView.initialHeight = UIScreen.main.bounds.height * 0.25
+        self.earthquakesSheetView.hideOnClosed = true
     }
     
     func setupMap(){
@@ -66,6 +79,14 @@ class MapViewController: UIViewController {
     func refreshData(){
         DispatchQueue.main.async {
             self.refreshMapAnnotations()
+            self.earthquakesSheetView.reloadData()
+            let shouldHide = self.dataSource.earthquakes.count == 0
+            self.earthquakesSheetView.hideOnClosed = shouldHide
+            if shouldHide{
+                self.earthquakesSheetView.close()
+            }else{
+                self.earthquakesSheetView.open()
+            }
         }
     }
     
@@ -123,7 +144,12 @@ class MapViewController: UIViewController {
         let message = NSLocalizedString("magnitude_selection_alert_description", comment: "Alert message")
         
         let cancelTitle = NSLocalizedString("magnitude_selection_alert_cancel_action", comment: "Cancel")
-        let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel, handler: {[unowned self] _ in
+            if self.dataSource.earthquakes.count > 0{
+                self.earthquakesSheetView.hideOnClosed = false
+                self.earthquakesSheetView.open()
+            }
+        })
         
         let lowTitle = NSLocalizedString("magnitude_low", comment: "Low")
         let lowAction = UIAlertAction(title: lowTitle, style: .default, handler: {[unowned self] _ in
@@ -153,6 +179,8 @@ class MapViewController: UIViewController {
         alertController.addAction(extremeAction)
         alertController.addAction(cancelAction)
         
+        self.earthquakesSheetView.hideOnClosed = true
+        self.earthquakesSheetView.close()
         self.present(alertController, animated: true, completion: nil)
     }
     
@@ -213,6 +241,7 @@ extension MapViewController: CLLocationManagerDelegate{
             return
         }
         self.locationManager.startUpdatingLocation()
+        self.searchForCurrentLocation(self)
         self.locationAlert?.dismiss(animated: true, completion: nil)
     }
 }

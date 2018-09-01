@@ -18,6 +18,27 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="91.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iEW-2B-CkC">
+                        <rect key="frame" x="4" y="4" width="312" height="83.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                <size key="value" width="-1" height="2"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                <real key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Hw-ZR-iwz" customClass="UIViewDesignable" customModule="Earthquakes" customModuleProvider="target">
                         <rect key="frame" x="4" y="4" width="312" height="83.5"/>
                         <subviews>
@@ -29,37 +50,37 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M 1.4 - 70km NNW of Talkeetna, Alaska" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJh-Zb-1Gr">
-                                <rect key="frame" x="8" y="4" width="262.5" height="45.5"/>
+                                <rect key="frame" x="8" y="4" width="296" height="45.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agoust 31, 2018, 9:52:00 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alD-sq-og2">
-                                <rect key="frame" x="8" y="53.5" width="254.5" height="18"/>
+                                <rect key="frame" x="8" y="53.5" width="250.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.74612894144144148" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="2.4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnN-BE-9y5">
-                                <rect key="frame" x="270.5" y="26" width="41.5" height="31.5"/>
+                                <rect key="frame" x="266.5" y="52" width="41.5" height="31.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
-                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="0.1641094219" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="kJh-Zb-1Gr" firstAttribute="top" secondItem="9Hw-ZR-iwz" secondAttribute="top" constant="4" id="1u7-KB-7kq"/>
                             <constraint firstItem="kJh-Zb-1Gr" firstAttribute="leading" secondItem="E3r-Ct-hWC" secondAttribute="trailing" constant="4" id="81a-SJ-n2q"/>
-                            <constraint firstItem="jnN-BE-9y5" firstAttribute="leading" secondItem="kJh-Zb-1Gr" secondAttribute="trailing" id="Bcg-qC-apX"/>
+                            <constraint firstAttribute="trailing" secondItem="kJh-Zb-1Gr" secondAttribute="trailing" constant="8" id="Bcg-qC-apX"/>
                             <constraint firstItem="alD-sq-og2" firstAttribute="top" secondItem="kJh-Zb-1Gr" secondAttribute="bottom" constant="4" id="CTM-X2-yjs"/>
-                            <constraint firstItem="jnN-BE-9y5" firstAttribute="centerY" secondItem="9Hw-ZR-iwz" secondAttribute="centerY" id="Fys-Iv-WeI"/>
+                            <constraint firstItem="jnN-BE-9y5" firstAttribute="bottom" secondItem="9Hw-ZR-iwz" secondAttribute="bottom" id="Fys-Iv-WeI"/>
                             <constraint firstAttribute="bottom" secondItem="E3r-Ct-hWC" secondAttribute="bottom" id="LXy-II-ucZ"/>
                             <constraint firstItem="E3r-Ct-hWC" firstAttribute="top" secondItem="9Hw-ZR-iwz" secondAttribute="top" id="QhR-Ca-Tft"/>
                             <constraint firstItem="jnN-BE-9y5" firstAttribute="leading" secondItem="alD-sq-og2" secondAttribute="trailing" constant="8" id="VHP-CX-IvG"/>
                             <constraint firstItem="E3r-Ct-hWC" firstAttribute="leading" secondItem="9Hw-ZR-iwz" secondAttribute="leading" id="Wvz-Xa-cQg"/>
                             <constraint firstItem="alD-sq-og2" firstAttribute="leading" secondItem="kJh-Zb-1Gr" secondAttribute="leading" id="gph-R5-nn4"/>
-                            <constraint firstAttribute="trailing" secondItem="jnN-BE-9y5" secondAttribute="trailing" id="hkm-sT-ZJl"/>
+                            <constraint firstAttribute="trailing" secondItem="jnN-BE-9y5" secondAttribute="trailing" constant="4" id="hkm-sT-ZJl"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -70,14 +91,19 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="iEW-2B-CkC" secondAttribute="bottom" constant="4" id="0Nb-By-MRy"/>
                     <constraint firstAttribute="trailing" secondItem="9Hw-ZR-iwz" secondAttribute="trailing" constant="4" id="Nbb-mi-WdQ"/>
                     <constraint firstAttribute="bottom" secondItem="9Hw-ZR-iwz" secondAttribute="bottom" constant="4" id="QOR-yC-j9t"/>
                     <constraint firstItem="9Hw-ZR-iwz" firstAttribute="leading" secondItem="vHq-cI-ism" secondAttribute="leading" constant="4" id="WVv-IF-fi5"/>
+                    <constraint firstAttribute="trailing" secondItem="iEW-2B-CkC" secondAttribute="trailing" constant="4" id="YoE-00-89S"/>
                     <constraint firstItem="9Hw-ZR-iwz" firstAttribute="top" secondItem="vHq-cI-ism" secondAttribute="top" constant="4" id="Z3x-LC-BmQ"/>
+                    <constraint firstItem="iEW-2B-CkC" firstAttribute="top" secondItem="vHq-cI-ism" secondAttribute="top" constant="4" id="bsC-Oz-fjy"/>
+                    <constraint firstItem="iEW-2B-CkC" firstAttribute="leading" secondItem="vHq-cI-ism" secondAttribute="leading" constant="4" id="wXW-Dm-O59"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="containerView" destination="9Hw-ZR-iwz" id="axR-5g-sxX"/>
                 <outlet property="dateLabel" destination="alD-sq-og2" id="U50-q0-jTh"/>
                 <outlet property="magnitudeIndicator" destination="E3r-Ct-hWC" id="86M-Jz-ure"/>
                 <outlet property="magnitudeLabel" destination="jnN-BE-9y5" id="KYJ-DX-6SG"/>
