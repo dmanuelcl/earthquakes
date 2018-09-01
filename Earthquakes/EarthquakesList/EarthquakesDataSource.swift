@@ -6,11 +6,11 @@
 //  Copyright © 2018 Dani Manuel Céspedes Lara. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import AppDomain
 import MapKit
 
-class EarthquakesDataSource: EarthquakesDataSourceProtocol{
+class EarthquakesDataSource: NSObject, EarthquakesDataSourceProtocol{
     
     var currentSearchCoordiate: CLLocationCoordinate2D? = nil
     
@@ -40,4 +40,23 @@ class EarthquakesDataSource: EarthquakesDataSourceProtocol{
         }
     }
     
+}
+
+// MARK: - Add conformance to UITableViewDataSource
+extension EarthquakesDataSource: UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.earthquakes.count
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EarthquakeCell.self), for: indexPath) as! EarthquakeCell
+        let model = self.earthquakes[indexPath.row]
+        cell.configure(with: model)
+        return cell
+    }
 }

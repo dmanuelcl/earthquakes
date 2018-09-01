@@ -6,13 +6,13 @@
 //  Copyright © 2018 Dani Manuel Céspedes Lara. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import AppDomain
 import MapKit
 
 
 /// Allow fetch earquakes may be used from UIViewController
-protocol EarthquakesDataSourceProtocol {
+protocol EarthquakesDataSourceProtocol{
     
     /// The coordinate used in te most recent search
     var currentSearchCoordiate: CLLocationCoordinate2D? {get}
@@ -38,24 +38,4 @@ protocol EarthquakesDataSourceProtocol {
     ///   - maginute: Earthquakes magnitude to filter
     ///   - completion: Invoked with the results obtained
     func fetchEarthquakesFor(magnitude: EarthquakeMagnitude, completion: @escaping([Earthquake]) -> Void)
-}
-
-
-
-// MARK: - Add default implementation for EarthquakesDataSourceProtocol if te receiver conform to UITableViewDataSource
-extension EarthquakesDataSourceProtocol where Self: UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.earthquakes.count
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EarthquakeCell.self), for: indexPath) as! EarthquakeCell
-        let model = self.earthquakes[indexPath.row]
-        cell.configure(with: model)
-        return cell
-    }
 }
