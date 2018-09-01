@@ -29,10 +29,10 @@ extension Earthquake: Decodable {
     public init(from decoder: Decoder) throws{
         let decoderContainer = try decoder.container(keyedBy: CodingKeys.NestedCodingKeys.self)
         let propertiesContainer = try decoderContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .properties)
-        let _magnitude: Double = try propertiesContainer.decode(Double.self, forKey: .magnitude)
         
-        guard let magnitude = EarthquakeMagnitude(magnitude: _magnitude) else {
-            throw DecodingError.dataCorrupted(DecodingError.Context.init(codingPath: [CodingKeys.magnitude], debugDescription: "Invalid magnitude"))
+        var magnitude: EarthquakeMagnitude?
+        if let _magnitude = try? propertiesContainer.decode(Double?.self, forKey: .magnitude){
+            magnitude = EarthquakeMagnitude(magnitude: _magnitude ?? 1.0)
         }
         
         let place: String = try propertiesContainer.decode(String.self, forKey: .place)
