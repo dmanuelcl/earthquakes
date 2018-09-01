@@ -63,8 +63,12 @@ class MapViewController: UIViewController {
         self.map.setCenter(coordinate, animated: true)
     }
     
+    func refreshData(){
+        self.refreshMapAnnotations()
+    }
+    
     func refreshMapAnnotations() {
-
+        
         // Remove the old anotations
         self.map.removeAnnotations(self.map.annotations)
         
@@ -85,8 +89,8 @@ class MapViewController: UIViewController {
             if let magnitude = earthquake.magnitude{
                 let subtitle = NSLocalizedString("map_anotation_details", comment: "Anotation subtitle")
                 pointAnotation.subtitle = String.init(format: subtitle, magnitude.magnitude, date)
-            }else{
-                pointAnotation.subtitle = "Event on \(date)"
+            }else{ let subtitle = NSLocalizedString("map_anotation_without_magnitude_details", comment: "Anotation subtitle")
+                pointAnotation.subtitle = String.init(format: subtitle, date)
             }
             
             self.map.addAnnotation(pointAnotation)
@@ -101,9 +105,15 @@ class MapViewController: UIViewController {
     
     
     func search(forMagnitude magnitude: EarthquakeMagnitude){
-        self.dataSource.fetchEarthquakesFor(magnitude: magnitude, completion: { _ in
-            self.refreshMapAnnotations()
-        })
+        self.dataSource.fetchEarthquakesFor(magnitude: magnitude) {[unowned self] _ in
+            self.refreshData()
+        }
+    }
+    
+    func search(forLatitude latitude: Double, longitude: Double){
+        self.dataSource.fetchEarthquakesIn(longitude: longitude, latitude: latitude) {[unowned self] _ in
+            self.refreshData()
+        }
     }
     
     func presentMagnitudeSelectionAlertController(){
@@ -120,7 +130,7 @@ class MapViewController: UIViewController {
         
         let moderateTitle = NSLocalizedString("magnitude_moderate", comment: "Moderate")
         let moderateAction = UIAlertAction(title: moderateTitle, style: .default, handler: {[unowned self] _ in
-             self.search(forMagnitude: .low(EarthquakeMagnitude.defaultModerateMagnitude))
+            self.search(forMagnitude: .low(EarthquakeMagnitude.defaultModerateMagnitude))
         })
         
         let highTitle = NSLocalizedString("magnitude_high", comment: "High")
@@ -130,7 +140,7 @@ class MapViewController: UIViewController {
         
         let extremeTitle = NSLocalizedString("magnitude_extreme", comment: "Extreme")
         let extremeAction = UIAlertAction(title: extremeTitle, style: .default, handler: {[unowned self] _ in
-             self.search(forMagnitude: .low(EarthquakeMagnitude.defaultExtremeMagnitude))
+            self.search(forMagnitude: .low(EarthquakeMagnitude.defaultExtremeMagnitude))
         })
         
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
@@ -141,12 +151,13 @@ class MapViewController: UIViewController {
         alertController.addAction(extremeAction)
         alertController.addAction(cancelAction)
         
-        print(#function, #line)
         self.present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func searchForCurrentLocation(_ sender: AnyObject){
         self.updateButtonStatus(searchByMagnitude: false, searchByLocation: false, searchByCurrentLocation: true)
+        guard let coordinate = self.locationManager.location?.coordinate else {return}
+        self.search(forLatitude: coordinate.latitude, longitude: coordinate.longitude)
     }
     
     @IBAction func searchByMagnitude(_ sender: AnyObject){
@@ -158,9 +169,26 @@ class MapViewController: UIViewController {
         self.updateButtonStatus(searchByMagnitude: false, searchByLocation: true, searchByCurrentLocation: false)
     }
     
-    @IBAction func refreshData(_ sender: AnyObject){
+    @IBAction func reloadData(_ sender: AnyObject){
+        if self.searchButton.isSelected{
+            guard let lastCoordinate = self.dataSource.currentSearchCoordiate else {
+                return
+            }
+            self.search(forLatitude: lastCoordinate.latitude, longitude: lastCoordinate.longitude)
+            return
+        }
         
+        if self.magnitudeButton.isSelected{
+            guard let magnitude = self.dataSource.currentMagnitude else {
+                return
+            }
+            self.search(forMagnitude: magnitude)
+            return
+        }
         
+        if self.currentLocationButton.isSelected{
+            self.searchForCurrentLocation(self)
+        }
     }
 }
 

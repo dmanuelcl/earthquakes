@@ -164,7 +164,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                         <state key="normal" image="ic_refresh"/>
                                                         <connections>
-                                                            <action selector="refreshData:" destination="OUv-A6-cdf" eventType="touchUpInside" id="Lc7-OA-TdQ"/>
+                                                            <action selector="reloadData:" destination="OUv-A6-cdf" eventType="touchUpInside" id="OjK-GD-kiV"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
