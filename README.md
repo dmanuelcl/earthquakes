@@ -12,7 +12,7 @@ You can select a earthquake and see it in a map.
 
 **Results**: Limit the results to the specified number of events
 
-![Screen capture](Screenshots/settings.jpeg)
+<img src="Screenshots/settings.jpeg" width="320"></img>
 
 
 ![Screen capture](Screenshots/video.m4v)
