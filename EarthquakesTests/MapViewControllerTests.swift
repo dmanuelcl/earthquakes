@@ -8,6 +8,7 @@
 
 import XCTest
 import AppDomain
+import MapKit
 
 @testable import Earthquakes
 
@@ -28,6 +29,10 @@ class MapViewControllerSpy: MapViewController {
 }
 
 class EarthquakesDataSourceSpy: EarthquakesDataSourceProtocol{
+    var currentSearchCoordiate: CLLocationCoordinate2D?
+    
+    var currentMagnitude: EarthquakeMagnitude?
+    
     var earthquakes: [Earthquake] = []
     
     var isFetchEarthquakesInCalled: Bool = false
@@ -71,8 +76,10 @@ class MapViewControllerTests: XCTestCase {
         }
         let dataSourceSpy = EarthquakesDataSourceSpy()
         viewController.dataSource = dataSourceSpy
+        print(#function, #line, viewController.searchButton.isSelected, viewController.currentLocationButton.isSelected, viewController.magnitudeButton.isSelected)
         viewController.reloadData(self)
         
+        print(#function, #line, viewController.searchButton.isSelected, viewController.currentLocationButton.isSelected, viewController.magnitudeButton.isSelected)
         if viewController.searchButton.isSelected{
             XCTAssertTrue(dataSourceSpy.isFetchEarthquakesInCalled, "On reloadData(:) If the searchButton is selected the dataSource.fetchEarthquakesIn(longitude:latitude:completion) method must be called ")
         }
@@ -100,6 +107,7 @@ class MapViewControllerTests: XCTestCase {
         guard let viewController = self.viewController else {
             return
         }
+        viewController.dataSource = EarthquakesDataSourceSpy()
         viewController.searchByMagnitude(self)
         XCTAssertTrue(viewController.magnitudeButton.isSelected, "On searchByMagnitude(:) the magnitudeButton.isSelected must be true ")
         XCTAssertTrue(!viewController.searchButton.isSelected, "On searchByMagnitude(:) the searchButton.isSelected must be false ")
@@ -110,6 +118,7 @@ class MapViewControllerTests: XCTestCase {
         guard let viewController = self.viewController else {
             return
         }
+        viewController.dataSource = EarthquakesDataSourceSpy()
         viewController.searchForCurrentLocation(self)
         XCTAssertTrue(!viewController.magnitudeButton.isSelected, "On searchForCurrentLocation(:) the magnitudeButton.isSelected must be false ")
         XCTAssertTrue(!viewController.searchButton.isSelected, "On searchForCurrentLocation(:) the searchButton.isSelected must be false ")
@@ -120,6 +129,7 @@ class MapViewControllerTests: XCTestCase {
         guard let viewController = self.viewController else {
             return
         }
+        viewController.dataSource = EarthquakesDataSourceSpy()
         viewController.searchForLocation(self)
         XCTAssertTrue(!viewController.magnitudeButton.isSelected, "On searchForLocation(:) the magnitudeButton.isSelected must be false ")
         XCTAssertTrue(viewController.searchButton.isSelected, "On searchForLocation(:) the searchButton.isSelected must be true ")
