@@ -40,8 +40,8 @@ extension Earthquake: Decodable {
         
         let geometryContainer = try decoderContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .geometry)
         var coordinatesContainer = try geometryContainer.nestedUnkeyedContainer(forKey: .coordinates)
-        let latitude: Double = try coordinatesContainer.decode(Double.self)
         let longitude: Double = try coordinatesContainer.decode(Double.self)
+        let latitude: Double = try coordinatesContainer.decode(Double.self)
         let depth: Double = try coordinatesContainer.decode(Double.self)
         self.init(magnitude: magnitude, place: place, time: time, latitude: latitude, longitude: longitude, depth: depth)
     }
