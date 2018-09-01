@@ -50,7 +50,7 @@ class MapViewController: UIViewController {
     }
     
     func setupEarthquakeSheetView(){
-        self.earthquakesSheetView = EarthquakeSheetView(dataSource: self.dataSource as! UITableViewDataSource)
+        self.earthquakesSheetView = EarthquakeSheetView(dataSource: self.dataSource as! EarthquakeSheetViewDataSource)
         self.earthquakesSheetView.sheetHeight = UIScreen.main.bounds.height * 0.75
         self.earthquakesSheetView.initialHeight = UIScreen.main.bounds.height * 0.25
         self.earthquakesSheetView.hideOnClosed = true

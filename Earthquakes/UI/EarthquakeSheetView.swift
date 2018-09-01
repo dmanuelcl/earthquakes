@@ -7,13 +7,20 @@
 //
 
 import UIKit
+import AppDomain
+
+typealias EarthquakeSheetViewDataSource = UITableViewDataSource & EarthquakesDataSourceProtocol
+protocol EarthquakeSheetViewDelegate: class {
+    func sheetView(_ sheetView: EarthquakeSheetView, didSelectEarthquake earthquake: Earthquake)
+}
 
 class EarthquakeSheetView: SheetView {
     
     private var tableView: UITableView!
-    private let dataSource: UITableViewDataSource
+    private let dataSource: EarthquakeSheetViewDataSource
+    weak var earthquakDelegate: EarthquakeSheetViewDelegate?
     
-    init(dataSource: UITableViewDataSource) {
+    init(dataSource: EarthquakeSheetViewDataSource) {
         self.dataSource = dataSource
         super.init(frame: .zero)
         self.closeOnTap = false
@@ -46,12 +53,17 @@ class EarthquakeSheetView: SheetView {
 }
 
 extension EarthquakeSheetView: UITableViewDelegate{
+    func callDelegate(forModelAt index: Int){
+        let model = self.dataSource.earthquakes[index]
+        self.earthquakDelegate?.sheetView(self, didSelectEarthquake: model)
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(#function, #line)
+        self.callDelegate(forModelAt: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        print(#function, #line)
+        self.callDelegate(forModelAt: indexPath.row)
     }
     
 }
