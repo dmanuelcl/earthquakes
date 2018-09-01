@@ -1,3 +1,3 @@
 "no_when_in_use_location_authorization_alert_title" = "Allow Location";
 "no_when_in_use_location_authorization_alert_message" = "Allows us to know your location, so we can show you the information more relevant";
-
+"map_anotation_details" = "Magnitude %.1f on %@";
