@@ -12,8 +12,9 @@ import Foundation
 /// Define the setings to filter the result
 struct Settings {
     
+    static let shared: Settings = Settings()
     
-    /// maximum number of results to fetch
+    /// maximum number of results to fetch, can be udated in App Settings > Earthquakes > Results
     var maxResults: Int{
         let defaultValue = 5
         var maxResults = UserDefaults.standard.integer(forKey: "search_max_results_preference")
@@ -25,7 +26,7 @@ struct Settings {
     }
     
     
-    /// Distance maximum for the searches
+    /// Distance maximum for the searches, can be udated in App Settings > Earthquakes > Disatnce
     var distance: Int{
         let defaultValue = 100
         var distance = UserDefaults.standard.integer(forKey: "search_distance_preference")
@@ -37,7 +38,7 @@ struct Settings {
     }
     
     
-    /// The maximum antiquity of events
+    /// The maximum antiquity of events, can be udated in App Settings > Earthquakes > Hours ago
     var hoursAgo: Int{
         let defaultValue = 1
         var hoursAgo = UserDefaults.standard.integer(forKey: "search_hours_preference")
