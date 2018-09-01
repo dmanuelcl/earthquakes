@@ -51,6 +51,7 @@
 		0F669308213A32670058D1A6 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F669307213A32670058D1A6 /* Settings.swift */; };
 		0F66930A213A32670058D1A6 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F669309213A32670058D1A6 /* SheetView.swift */; };
 		0F66930E213A32670058D1A6 /* UIView+IBDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F66930D213A32670058D1A6 /* UIView+IBDesignable.swift */; };
+		0FA24BAF213B07EC0064B645 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA24BAE213B07EC0064B645 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,6 +172,7 @@
 		0F669307213A32670058D1A6 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		0F669309213A32670058D1A6 /* SheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
 		0F66930D213A32670058D1A6 /* UIView+IBDesignable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+IBDesignable.swift"; sourceTree = "<group>"; };
+		0FA24BAE213B07EC0064B645 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +279,7 @@
 		0F669273213A32670058D1A6 /* Earthquakes */ = {
 			isa = PBXGroup;
 			children = (
+				0FA24BAD213B07C80064B645 /* Search */,
 				0F5EAF10213A514F001BFBA9 /* EarthquakesList */,
 				0F48C64E213A388C009E28EC /* Localization */,
 				0F66930C213A32670058D1A6 /* Extensions */,
@@ -453,6 +456,14 @@
 				0F38128F213A2AB300DC36B0 /* Earthquake.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0FA24BAD213B07C80064B645 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				0FA24BAE213B07EC0064B645 /* SearchViewController.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -704,6 +715,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F669277213A32670058D1A6 /* MapViewController.swift in Sources */,
+				0FA24BAF213B07EC0064B645 /* SearchViewController.swift in Sources */,
 				0F5EAF16213AD038001BFBA9 /* EarthquakesDataSource.swift in Sources */,
 				0F66930E213A32670058D1A6 /* UIView+IBDesignable.swift in Sources */,
 				0F1D215A213B03E000D22E07 /* LoadingView.swift in Sources */,

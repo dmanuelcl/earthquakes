@@ -239,6 +239,63 @@
             </objects>
             <point key="canvasLocation" x="-63" y="127"/>
         </scene>
+        <!--Search View Controller-->
+        <scene sceneID="omY-nl-qkY">
+            <objects>
+                <viewController id="d2j-Sm-CXe" customClass="SearchViewController" customModule="Earthquakes" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZZG-Mt-WnJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="8vE-Nd-rSm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9Av-cs-AUo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bNE-rP-yiO">
+                                <rect key="frame" x="0.0" y="76" width="375" height="591"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="d2j-Sm-CXe" id="GE5-XF-UGt"/>
+                                    <outlet property="delegate" destination="d2j-Sm-CXe" id="X70-8o-fvs"/>
+                                </connections>
+                            </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="vEX-Vp-3Qa">
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="d2j-Sm-CXe" id="kVg-AG-Xhv"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="bNE-rP-yiO" firstAttribute="top" secondItem="vEX-Vp-3Qa" secondAttribute="bottom" id="0Ht-ox-4JD"/>
+                            <constraint firstItem="bNE-rP-yiO" firstAttribute="leading" secondItem="9Av-cs-AUo" secondAttribute="leading" id="329-ka-89t"/>
+                            <constraint firstItem="bNE-rP-yiO" firstAttribute="top" secondItem="vEX-Vp-3Qa" secondAttribute="bottom" id="Clv-jh-lke"/>
+                            <constraint firstAttribute="trailing" secondItem="bNE-rP-yiO" secondAttribute="trailing" id="LKj-8V-XYe"/>
+                            <constraint firstItem="vEX-Vp-3Qa" firstAttribute="leading" secondItem="9Av-cs-AUo" secondAttribute="leading" id="StS-0Y-nOD"/>
+                            <constraint firstAttribute="trailing" secondItem="vEX-Vp-3Qa" secondAttribute="trailing" id="bjn-zq-FDl"/>
+                            <constraint firstItem="vEX-Vp-3Qa" firstAttribute="top" secondItem="ZZG-Mt-WnJ" secondAttribute="bottom" id="dyW-aA-J87"/>
+                            <constraint firstItem="8vE-Nd-rSm" firstAttribute="top" secondItem="bNE-rP-yiO" secondAttribute="bottom" id="mfW-8G-SnC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XEb-EY-azS"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="rR5-mC-tEH">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ixb-XU-qMq">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="cancel:" destination="d2j-Sm-CXe" id="QjX-8w-kjy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchResultsTableView" destination="bNE-rP-yiO" id="DYr-Ql-FBV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f4s-xr-aRB" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1314" y="126"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ic_location" width="22" height="22"/>
