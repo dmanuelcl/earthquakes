@@ -1,3 +1,11 @@
 "no_when_in_use_location_authorization_alert_title" = "Allow Location";
 "no_when_in_use_location_authorization_alert_message" = "Allows us to know your location, so we can show you the information more relevant";
 "map_anotation_details" = "Magnitude %.1f on %@";
+
+"magnitude_selection_alert_title" = "Choose a magnitude";
+"magnitude_selection_alert_description" = "Choose a magnitude to show Earthquakes with magnitudes equal or greater than your choosed";
+"magnitude_selection_alert_cancel_action" = "Cancel";
+"magnitude_low" = "Low";
+"magnitude_moderate" = "Moderate";
+"magnitude_high" = "High";
+"magnitude_extreme" = "Extreme";

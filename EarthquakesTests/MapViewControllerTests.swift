@@ -76,18 +76,4 @@ class MapViewControllerTests: XCTestCase {
         XCTAssertTrue(!viewController.currentLocationButton.isSelected, "On searchForLocation(:) the currentLocationButton.isSelected must be false ")
     }
     
-    func testPresentAlertControllerOnSearchForMagnitude() {
-        guard let viewController = self.viewController else {
-            return
-        }
-        viewController.searchByMagnitude(self)
-        let expectation = XCTestExpectation(description: "")
-        _ = XCTWaiter.wait(for: [expectation], timeout: 1.0)
-        guard let presenterViewController = viewController.presentedViewController as? UIAlertController else {
-            XCTFail("searchByMagnitude(:) must present an UIAlertController")
-            return
-        }
-        XCTAssertTrue(presenterViewController.preferredStyle == .actionSheet, "searchByMagnitude(:) must present an UIAlertController with style actionSheet")
-    }
-    
 }

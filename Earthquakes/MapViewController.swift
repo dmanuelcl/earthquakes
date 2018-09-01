@@ -36,10 +36,10 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         self.dateFormatter.dateFormat = "MMMM dd, yyyy, hh:mm:ss a"
         self.setupMap()
-        self.setupEarthquakesSheetView()
+        self.setupEarthquakeSheetView()
     }
     
-    func setupEarthquakesSheetView(){
+    func setupEarthquakeSheetView(){
         
     }
     
@@ -99,12 +99,59 @@ class MapViewController: UIViewController {
         self.searchButton.isSelected = searchByLocation
     }
     
+    
+    func search(forMagnitude magnitude: EarthquakeMagnitude){
+        self.dataSource.fetchEarthquakesFor(magnitude: magnitude, completion: { _ in
+            self.refreshMapAnnotations()
+        })
+    }
+    
+    func presentMagnitudeSelectionAlertController(){
+        let title = NSLocalizedString("magnitude_selection_alert_title", comment: "Alert title")
+        let message = NSLocalizedString("magnitude_selection_alert_description", comment: "Alert message")
+        
+        let cancelTitle = NSLocalizedString("magnitude_selection_alert_cancel_action", comment: "Cancel")
+        let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel, handler: nil)
+        
+        let lowTitle = NSLocalizedString("magnitude_low", comment: "Low")
+        let lowAction = UIAlertAction(title: lowTitle, style: .default, handler: {[unowned self] _ in
+            self.search(forMagnitude: .low(EarthquakeMagnitude.defaultLowMagnitude))
+        })
+        
+        let moderateTitle = NSLocalizedString("magnitude_moderate", comment: "Moderate")
+        let moderateAction = UIAlertAction(title: moderateTitle, style: .default, handler: {[unowned self] _ in
+             self.search(forMagnitude: .low(EarthquakeMagnitude.defaultModerateMagnitude))
+        })
+        
+        let highTitle = NSLocalizedString("magnitude_high", comment: "High")
+        let highAction = UIAlertAction(title: highTitle, style: .default, handler:  {[unowned self] _ in
+            self.search(forMagnitude: .low(EarthquakeMagnitude.defaultHighMagnitude))
+        })
+        
+        let extremeTitle = NSLocalizedString("magnitude_extreme", comment: "Extreme")
+        let extremeAction = UIAlertAction(title: extremeTitle, style: .default, handler: {[unowned self] _ in
+             self.search(forMagnitude: .low(EarthquakeMagnitude.defaultExtremeMagnitude))
+        })
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        
+        alertController.addAction(lowAction)
+        alertController.addAction(moderateAction)
+        alertController.addAction(highAction)
+        alertController.addAction(extremeAction)
+        alertController.addAction(cancelAction)
+        
+        print(#function, #line)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     @IBAction func searchForCurrentLocation(_ sender: AnyObject){
         self.updateButtonStatus(searchByMagnitude: false, searchByLocation: false, searchByCurrentLocation: true)
     }
     
     @IBAction func searchByMagnitude(_ sender: AnyObject){
         self.updateButtonStatus(searchByMagnitude: true, searchByLocation: false, searchByCurrentLocation: false)
+        self.presentMagnitudeSelectionAlertController()
     }
     
     @IBAction func searchForLocation(_ sender: AnyObject){
@@ -141,10 +188,6 @@ extension MapViewController: CLLocationManagerDelegate{
 }
 
 extension MapViewController: MKMapViewDelegate{
-    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        self.refreshMapAnnotations()
-    }
-    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard let annotation = annotation as? EarthquakePointAnnotation else {
             return nil
