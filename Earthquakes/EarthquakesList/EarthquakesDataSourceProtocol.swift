@@ -17,6 +17,9 @@ protocol EarthquakesDataSourceProtocol {
     /// The coordinate used in te most recent search
     var currentSearchCoordiate: CLLocationCoordinate2D? {get}
     
+    /// The magnitude used in te most recent search
+    var currentMagnitude: EarthquakeMagnitude? {get}
+    
     /// Current earthquakes
     var earthquakes: [Earthquake] {get}
     
