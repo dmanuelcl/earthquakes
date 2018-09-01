@@ -32,3 +32,23 @@ protocol EarthquakesDataSourceProtocol {
     ///   - completion: Invoked with the results obtained
     func fetchEarthquakesFor(magnitude: EarthquakeMagnitude, completion: @escaping([Earthquake]) -> Void)
 }
+
+
+
+// MARK: - Add default implementation for UITableViewDataSource to calses that conform to EarthquakesDataSourceProtocol && UITableViewDataSource
+extension EarthquakesDataSourceProtocol where Self: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.earthquakes.count
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EarthquakeCell.self), for: indexPath) as! EarthquakeCell
+        let model = self.earthquakes[indexPath.row]
+        cell.configure(with: model)
+        return cell
+    }
+}
