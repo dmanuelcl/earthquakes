@@ -17,6 +17,22 @@ public enum EarthquakeMagnitude {
     case moderate(Double)
     case low(Double)
     
+    public static var defaultLowMagnitude: Double{
+        return 1.5
+    }
+    
+    public static var defaultModerateMagnitude: Double{
+        return 4.5
+    }
+    
+    public static var defaultHighMagnitude: Double{
+        return 7
+    }
+    
+    public static var defaultExtremeMagnitude: Double{
+        return 8
+    }
+    
     
     /// Create an instance of EarthquakeMagnitude usign the magnitude given
     ///
@@ -24,17 +40,17 @@ public enum EarthquakeMagnitude {
         guard magnitude > 0 else {
             return nil
         }
-        if magnitude < 1.5{
+        if magnitude <= EarthquakeMagnitude.defaultLowMagnitude{
             self = .low(magnitude)
             return
         }
         
-        if magnitude <= 4.5{
+        if magnitude <= EarthquakeMagnitude.defaultModerateMagnitude{
             self = .moderate(magnitude)
             return
         }
         
-        if magnitude <= 7{
+        if magnitude <= EarthquakeMagnitude.defaultHighMagnitude{
             self = .high(magnitude)
             return
         }
