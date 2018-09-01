@@ -11,10 +11,34 @@ import AppDomain
 
 extension Earthquake{
     var magnitudeColor: UIColor{
-        return UIColor()
+        guard let magnitude = self.magnitude else {
+            return UIColor.gray
+        }
+        switch magnitude {
+        case .low:
+            return UIColor.green
+        case .moderate:
+            return UIColor.yellow
+        case .high:
+            return UIColor.orange
+        case .extreme:
+            return UIColor.red
+        }
     }
     
     var magnitudeImage: UIImage{
-        return UIImage()
+        guard let magnitude = self.magnitude else {
+            return #imageLiteral(resourceName: "map_pin_gray")
+        }
+        switch magnitude {
+        case .low:
+            return #imageLiteral(resourceName: "map_pin_green")
+        case .moderate:
+            return #imageLiteral(resourceName: "map_pin_yellow")
+        case .high:
+            return #imageLiteral(resourceName: "map_pin_orange")
+        case .extreme:
+            return #imageLiteral(resourceName: "map_pin_red")
+        }
     }
 }
