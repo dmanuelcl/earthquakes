@@ -10,7 +10,6 @@ import UIKit
 import AppDomain
 import MapKit
 
-
 class EarthquakePointAnnotation: MKPointAnnotation {
     var earthquake: Earthquake!
 }
@@ -247,7 +246,7 @@ class MapViewController: UIViewController {
     }
 }
 
-
+// MARK: - CLLocationManagerDelegate conformance
 extension MapViewController: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.first else {
@@ -271,6 +270,8 @@ extension MapViewController: CLLocationManagerDelegate{
     }
 }
 
+
+// MARK: - MKMapViewDelegate conformance
 extension MapViewController: MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard let annotation = annotation as? EarthquakePointAnnotation else {
@@ -290,6 +291,8 @@ extension MapViewController: MKMapViewDelegate{
     }
 }
 
+
+// MARK: - EarthquakeSheetViewDelegate conformance
 extension MapViewController: EarthquakeSheetViewDelegate{
     func sheetView(_ sheetView: EarthquakeSheetView, didSelectEarthquake earthquake: Earthquake) {
         let coordinate = CLLocationCoordinate2D(latitude: earthquake.latitude, longitude: earthquake.longitude)
@@ -313,6 +316,7 @@ extension MapViewController: EarthquakeSheetViewDelegate{
 }
 
 
+// MARK: - SearchViewControllerDelegate conformance
 extension MapViewController: SearchViewControllerDelegate{
     func searchView(didCancel searchViewController: SearchViewController) {
         searchViewController.dismiss(animated: true, completion: nil)

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AppDomain
+import AppServices
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +18,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        let rootViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateInitialViewController() as! MapViewController
+        
+            let apiManager = UsgsApiManager.shared
+        let dataProvider = EarthquakesDataProvider(apiManager: apiManager)
+        
+        rootViewController.dataSource = EarthquakesDataSource(dataProvider: dataProvider)
+        
+        window.rootViewController = rootViewController
+        self.window = window
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 
