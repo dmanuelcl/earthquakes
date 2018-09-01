@@ -295,6 +295,7 @@ extension MapViewController: MKMapViewDelegate{
 // MARK: - EarthquakeSheetViewDelegate conformance
 extension MapViewController: EarthquakeSheetViewDelegate{
     func sheetView(_ sheetView: EarthquakeSheetView, didSelectEarthquake earthquake: Earthquake) {
+        earthquake.playSound()
         let coordinate = CLLocationCoordinate2D(latitude: earthquake.latitude, longitude: earthquake.longitude)
         self.centerMap(in: coordinate)
         //FIXME: - This is not the best way to perform this, fix me

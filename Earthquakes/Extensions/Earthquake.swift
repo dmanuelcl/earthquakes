@@ -8,6 +8,7 @@
 
 import UIKit
 import AppDomain
+import AVFoundation
 
 extension Earthquake{
     var magnitudeColor: UIColor{
@@ -39,6 +40,44 @@ extension Earthquake{
             return #imageLiteral(resourceName: "map_pin_orange")
         case .extreme:
             return #imageLiteral(resourceName: "map_pin_red")
+        }
+    }
+    
+    
+    /// Try to play a sond based on the earthquake magnitude, for now just play the same sound until i find a better soud
+    func playSound(){
+        
+        guard let magnitude = self.magnitude else {
+            return
+        }
+        
+        var soundUrl: URL? = Bundle.main.url(forResource: "default_earthquake", withExtension: "mp3")
+        switch magnitude {
+        case .low:
+            if let _soundUrl = Bundle.main.url(forResource: "earthquake_low", withExtension: "mp3"){
+                soundUrl = _soundUrl
+            }
+        case .moderate:
+            if let _soundUrl = Bundle.main.url(forResource: "earthquake_moderate", withExtension: "mp3"){
+                soundUrl = _soundUrl
+            }
+        case .high:
+            if let _soundUrl = Bundle.main.url(forResource: "earthquake_high", withExtension: "mp3"){
+                soundUrl = _soundUrl
+            }
+        case .extreme:
+            if let _soundUrl = Bundle.main.url(forResource: "earthquake_extreme", withExtension: "mp3"){
+                soundUrl = _soundUrl
+            }
+        }
+        guard let url = soundUrl else {return}
+        do{
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .defaultToSpeaker)
+            let player = AVPlayer(url: url)
+            player.volume = 1
+            player.play()
+        }catch let e{
+            print(#function, #line, e)
         }
     }
 }
