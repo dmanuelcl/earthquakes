@@ -1,5 +1,9 @@
 ##Earthquakes
 
+* Xcode 9.4.1
+* iOS 10.0+
+
+
 Example app to fetch earthquakes and display in the map
 
 You can select a earthquake and see it in a map.
