@@ -96,6 +96,20 @@ class MapViewController: UIViewController {
         }
     }
     
+    //Given a list of locations, find the nearest location
+    func nearestLocation(locations: [CLLocation], referenceLocation: CLLocation) -> CLLocation?{
+        var minimumDistance: Double = -1
+        var closestLocation: CLLocation?
+        for location in locations{
+            let distance = referenceLocation.distance(from: location)
+            if distance < minimumDistance || minimumDistance == -1 {
+                minimumDistance = distance
+                closestLocation = location
+            }
+        }
+        return closestLocation
+    }
+    
     
     /// Refresh te current data reload the list of Earthquakes as well as the map annotations
     func refreshData(){
@@ -174,9 +188,12 @@ class MapViewController: UIViewController {
     /// - Parameter magnitude: magnitude used for search
     func search(forMagnitude magnitude: EarthquakeMagnitude){
         self.loadingView.display()
-        self.dataSource.fetchEarthquakesFor(magnitude: magnitude) {[unowned self] _ in
-            if let coordinate = self.locationManager.location?.coordinate {
-                self.centerMap(in: coordinate)
+        self.dataSource.fetchEarthquakesFor(magnitude: magnitude) {[unowned self] eartquakes in
+            if let currentLocation = self.locationManager.location {
+                let locations = eartquakes.map({CLLocation.init(latitude: $0.latitude, longitude: $0.longitude)})
+                if let nearestLocation = self.nearestLocation(locations: locations, referenceLocation: currentLocation){
+                    self.centerMap(in: nearestLocation.coordinate)
+                }
             }
             self.refreshData()
         }
