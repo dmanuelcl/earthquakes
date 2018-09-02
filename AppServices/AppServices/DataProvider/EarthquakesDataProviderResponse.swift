@@ -61,6 +61,9 @@ public class EarthquakesDataProvider: AppDomain.EarthquakesDataProvider {
     ///   - completion: Invoked with the results obtained
     public func getEarthquakes(maginute: EarthquakeMagnitude, completion: @escaping EarthquakesDataProviderResponse) {
         var parameters = self.defaultParameters
+        if let indexOfMaxradiuskm = parameters.index(where: {$0.apiParameters().hasPrefix("maxradiuskm")}){
+            parameters.remove(at: indexOfMaxradiuskm)
+        }
         parameters.append(.minmagnitude(maginute.magnitude))
         self.requestData(withParameters: parameters, completion: completion)
     }
